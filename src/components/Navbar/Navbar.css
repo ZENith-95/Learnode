@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Kanit", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 2rem;
+  background-color: hsla(231, 97%, 49%, 0.062);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 10px rgba(5px, 5px, 5px, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-direction: row;
+  padding: 0;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1b47c0;
+  text-decoration: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  list-style: none;
+}
+
+.nav-links a {
+  display: inline;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.nav-links a:hover {
+  color: #1b47c0;
+}
+
+.nav-links .active {
+  border-bottom: 3px solid #1b47c0;
+  color: #1b47c0;
+  transition: border-bottom 0.2s;
+  font-weight: 600;
+  letter-spacing: .02rem;
+}
+
+.auth-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.sign-up-button {
+  background-color: #1b47c0;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-family: kanit;
+  font-size: 1rem;
+}
+
+.sign-up-button:hover {
+  background-color: #010616;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.sign-in-button {
+  background-color: #1b47c0;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-family: kanit;
+  font-size: 1rem;
+  outline: none;
+}
+
+.sign-in-button:hover {
+  background-color: #ffffff;
+  color: #fff;
+  cursor: pointer;
+  color: black;
+  transition: background-color 0.5s;
+}
