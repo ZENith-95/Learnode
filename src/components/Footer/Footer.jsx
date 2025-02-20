@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faFacebook, faInstagram, faLinkedin, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faFacebook, faInstagram, faLinkedin, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import logo from "../../../public/logo.png";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -37,7 +42,7 @@ const Footer = () => {
         <div className="footer-section logo-section">
           <Link to="/">
             <img
-              src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
+              src= {logo}
               alt="Logo"
               className="footer-logo"
             />
@@ -119,8 +124,9 @@ const Footer = () => {
             <i className="fab fa-twitter" />
           </a>
         </div>
+      </div>
 
-        <form onSubmit={handleSubmit} className="subscription-form">
+      {/* <form onSubmit={handleSubmit} className="subscription-form">
           <p>
             Subscribe to our newsletter to stay informed about new features and
             updates.
@@ -146,14 +152,14 @@ const Footer = () => {
             By subscribing, you agree to our Privacy Policy and consent to
             receive updates.
           </small>
-        </form>
+        </form> */}
 
-        <div className="legal-links">
+      {/* <div className="legal-links">
           <Link to="/privacy">Privacy Policy</Link>
           <Link to="/terms">Terms of Service</Link>
           <Link to="/cookies">Cookies Settings</Link>
         </div>
-      </div>
+      </div> */}
 
       <div className="footer-copyright">
         © {new Date().getFullYear()} Learnode. All rights reserved.
