@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaBars } from "react-icons/fa";
 import "./Navbar.css";
-import logo from "../../../public/logo.png";
+import logo from "/logo.png";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("home");
@@ -16,7 +17,7 @@ const Navbar = () => {
       <div className="nav-container">
         <div className="logo">
           <Link to="/">
-            <img src={logo} alt=""  />
+            <img src={logo} alt="" />
           </Link>
         </div>
 
@@ -25,7 +26,9 @@ const Navbar = () => {
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
           aria-expanded={isMobileMenuOpen}>
-          <span className="hamburger"></span>
+          <span className="hamburger">
+            <FaBars />
+          </span>
         </button>
 
         <ul className={`nav-links ${isMobileMenuOpen ? "active" : ""}`}>
@@ -40,25 +43,34 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              to="/features"
-              className={menu === "features" ? "active" : ""}
-              onClick={() => setMenu("features")}
-              aria-current={menu === "features" ? "page" : ""}>
-              Features
+              to="/find-peers"
+              className={menu === "find-peers" ? "active" : ""}
+              onClick={() => setMenu("find-peers")}
+              aria-current={menu === "find-peers" ? "page" : ""}>
+              Find Peers
             </Link>
           </li>
           <li>
             <Link
-              to="/howitworks"
-              className={menu === "howitworks" ? "active" : ""}
-              onClick={() => setMenu("howitworks")}
-              aria-current={menu === "howitworks" ? "page" : ""}>
-              How it works
+              to="/set-goals"
+              className={menu === "set-goals" ? "active" : ""}
+              onClick={() => setMenu("set-goals")}
+              aria-current={menu === "set-goals" ? "page" : ""}>
+              Set Goals
             </Link>
           </li>
           <li>
             <Link
-              to="#footer"
+              to="/resources"
+              className={menu === "resources" ? "active" : ""}
+              onClick={() => setMenu("resources")}
+              aria-current={menu === "resources" ? "page" : ""}>
+              Resources
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/contact"
               className={menu === "contact" ? "active" : ""}
               onClick={() => setMenu("contact")}
               aria-current={menu === "contact" ? "page" : ""}>

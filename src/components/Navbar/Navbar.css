@@ -20,9 +20,8 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 0.7rem 3rem;
-  background-color: hsla(231, 97%, 49%, 0.062);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 10px rgba(5px, 5px, 5px, 0.5);
+  background-color: var(--white);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.459);
   position: fixed;
   top: 0;
   left: 0;
@@ -49,11 +48,11 @@ a {
 }
 
 .logo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    cursor: pointer;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .nav-links {
@@ -74,7 +73,7 @@ ul {
 .nav-links a {
   display: inline;
   text-decoration: none;
-  color: #ffffff;
+  color: #000;
 }
 
 .nav-links a:hover {
@@ -97,8 +96,8 @@ ul {
 }
 
 .sign-up-button {
-  background-color: #1b47c0;
-  color: #fff;
+  background-color: var(--blue);
+  color: var(--white);
   border: none;
   cursor: pointer;
   width: fit-content;
@@ -117,8 +116,8 @@ ul {
 }
 
 .sign-in-button {
-  background-color: #1b47c0;
-  color: #fff;
+  background-color: var(--white);
+  color: var(--black);
   border: none;
   cursor: pointer;
   width: fit-content;
@@ -127,13 +126,57 @@ ul {
   border-radius: 0.5rem;
   font-family: kanit;
   font-size: 1rem;
-  outline: none;
+  outline: 2px solid black;
 }
 
 .sign-in-button:hover {
-  background-color: #ffffff;
+  background-color: var(--black);
+  color: var(--white);
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.sign-in-button:active {
+  background-color: var(--black);
+  color: var(--white);
+  cursor: pointer;
+  transition: background-color 0.5s;
+}
+
+.sign-up-button:active {
+  background-color: #010616;
   color: #fff;
   cursor: pointer;
-  color: black;
   transition: background-color 0.5s;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.7rem 1.5rem;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .auth-buttons {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    margin-bottom: 1rem;
+  }
 }

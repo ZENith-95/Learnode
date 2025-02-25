@@ -65,8 +65,8 @@ const Signing = () => {
       <hr />
       <div className="log-in-bottom">
         <p>Don't have an account? </p>
-        <Link to="/sign-up" className="sign-up-button">
-          Sign Up
+        <Link to="/sign-up">
+          <button className="sign-up">Sign Up</button>
         </Link>
       </div>
     </div>
