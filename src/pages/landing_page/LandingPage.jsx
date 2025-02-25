@@ -15,7 +15,7 @@ const LandingPage = () => {
         <section className="hero" id="hero">
           <div className="hero-content">
             <div className="hero-left">
-              <h1>Unlock Your Full Potential Together</h1>
+              <h1>Unlock Your Full Potential</h1>
               <p>
                 Master any skill through the power of collaborative P2P learning.
                 Join a community where every lesson is personalized, progress is
@@ -23,7 +23,7 @@ const LandingPage = () => {
               </p>
             </div>
             <div className="hero-right">
-              
+
             </div>
             <Link to="#howitworks" className="cta">
               <button>Join the Learning Revolution</button>
