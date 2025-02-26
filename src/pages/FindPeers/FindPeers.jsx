@@ -39,7 +39,7 @@ const FindPeers = () => {
     {
       id: 5,
       name: "Kumah Vincent",
-      role: "4 years experience",
+      role: "4 years exp",
       avatar: avatar5,
     },
 

@@ -39,6 +39,8 @@
   /* border: 2px solid #000; */
   border-radius: 2rem;
   box-shadow: 0px 30px rgba(128, 128, 128, 0.185);
+  padding-bottom: 3rem;
+
 }
 
 .hero-right-img {
