@@ -1,0 +1,35 @@
+.fp-header {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ccc;
+  gap: 1rem;
+}
+
+.fp-back-button,
+.fp-notification-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  display: flex;
+  align-items: center;
+}
+
+.fp-logo img {
+  height: 35px;
+  object-fit: contain;
+}
+
+.fp-search-bar {
+  flex: 1;
+  display: flex;
+}
+
+.fp-search-bar input {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}

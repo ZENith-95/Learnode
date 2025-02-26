@@ -188,7 +188,7 @@
 @media (max-width: 768px) {
   .footer-desktop {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 1.5rem;
   }
 
@@ -196,6 +196,10 @@
     flex-direction: column;
     gap: 1.5rem;
     align-items: flex-start;
+  }
+
+  .footer-logo{
+    align-self: flex-start;
   }
 
   

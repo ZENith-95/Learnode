@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import HeroBg from "/hero_img.png";
+import Features from "../landing_page/Features";
 
 const LandingPage = () => {
   const [email, setEmail] = useState("");
@@ -15,26 +17,22 @@ const LandingPage = () => {
         <section className="hero" id="hero">
           <div className="hero-content">
             <div className="hero-left">
-              <h1>Unlock Your Full Potential</h1>
+              <div className="hero-header">
+                <h2>Unlock Your Full Potential</h2>
+              </div>
               <p>
-                Master any skill through the power of collaborative P2P learning.
-                Join a community where every lesson is personalized, progress is
-                celebrated, and knowledge sharing becomes an adventure.
+                Achieve Academic Excellence Alongside A Dedicated Community Of
+                Learners
               </p>
             </div>
             <div className="hero-right">
-
+              <div className="hero-right-img">
+                <img src={HeroBg} alt="" />
+              </div>
             </div>
-            <Link to="#howitworks" className="cta">
-              <button>Join the Learning Revolution</button>
-            </Link>
           </div>
         </section>
-        <section className="features" id="features">
-          <div className="container">
-
-          </div>
-        </section>
+        <Features />
       </div>
       <Footer />
     </>

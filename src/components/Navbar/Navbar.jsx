@@ -8,6 +8,11 @@ const Navbar = () => {
   const [menu, setMenu] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const handleNavClick = (menuItem) => {
+    setMenu(menuItem);
+    setIsMobileMenuOpen(false); // Close mobile menu when item is clicked
+  };
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -36,7 +41,7 @@ const Navbar = () => {
             <Link
               to="/"
               className={menu === "home" ? "active" : ""}
-              onClick={() => setMenu("home")}
+              onClick={() => handleNavClick("home")}
               aria-current={menu === "home" ? "page" : ""}>
               Home
             </Link>
@@ -45,8 +50,8 @@ const Navbar = () => {
             <Link
               to="/find-peers"
               className={menu === "find-peers" ? "active" : ""}
-              onClick={() => setMenu("find-peers")}
-              aria-current={menu === "find-peers" ? "page" : ""}>
+              onClick={() => handleLinkClick("find-peers")}
+              aria-current={menu === "find-peers" ? "page" : undefined}>
               Find Peers
             </Link>
           </li>
@@ -54,8 +59,8 @@ const Navbar = () => {
             <Link
               to="/set-goals"
               className={menu === "set-goals" ? "active" : ""}
-              onClick={() => setMenu("set-goals")}
-              aria-current={menu === "set-goals" ? "page" : ""}>
+              onClick={() => handleLinkClick("set-goals")}
+              aria-current={menu === "set-goals" ? "page" : undefined}>
               Set Goals
             </Link>
           </li>
@@ -63,8 +68,8 @@ const Navbar = () => {
             <Link
               to="/resources"
               className={menu === "resources" ? "active" : ""}
-              onClick={() => setMenu("resources")}
-              aria-current={menu === "resources" ? "page" : ""}>
+              onClick={() => handleLinkClick("resources")}
+              aria-current={menu === "resources" ? "page" : undefined}>
               Resources
             </Link>
           </li>
@@ -72,17 +77,23 @@ const Navbar = () => {
             <Link
               to="/contact"
               className={menu === "contact" ? "active" : ""}
-              onClick={() => setMenu("contact")}
-              aria-current={menu === "contact" ? "page" : ""}>
+              onClick={() => handleLinkClick("contact")}
+              aria-current={menu === "contact" ? "page" : undefined}>
               Contact
             </Link>
           </li>
         </ul>
         <div className="auth-buttons">
-          <Link to="/signing" className="sign-in-button">
+          <Link
+            to="/signing"
+            className="sign-in-button"
+            onClick={() => handleNavClick("signin")}>
             Log In
           </Link>
-          <Link to="/sign-up" className="sign-up-button">
+          <Link
+            to="/sign-up"
+            className="sign-up-button"
+            onClick={() => handleNavClick("signup")}>
             Sign Up
           </Link>
         </div>
