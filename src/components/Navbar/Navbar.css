@@ -106,25 +106,35 @@ ul {
   align-items: center;
 }
 
-.sign-in,
-.sign-up {
-  padding: 0.5rem 1.2rem;
+.sign-in-button:hover,
+.sign-up-button:hover {
+  background-color: black;
+  color: white;
+
+
+}
+
+
+.sign-in-button {
+  color: var(--black);
+  background: transparent;
+  border: 2px solid var(--black);
+   padding: 0.5rem 1.2rem;
   border-radius: 0.5rem;
   font-size: 0.9rem;
   font-weight: 500;
   transition: all var(--transition-speed) ease;
 }
 
-.sign-in {
-  color: var(--black);
-  background: transparent;
-  border: 2px solid var(--black);
-}
-
-.sign-up {
+.sign-up-button {
   color: var(--white);
   background: var(--blue);
   border: none;
+   padding: 0.5rem 1.2rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all var(--transition-speed) ease;
 }
 
 /* Mobile menu button */
