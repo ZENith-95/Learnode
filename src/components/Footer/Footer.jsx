@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Footer.css";
+import "./footer.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faFacebook, faInstagram, faLinkedin, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
