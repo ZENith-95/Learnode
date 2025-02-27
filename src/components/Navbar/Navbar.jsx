@@ -21,7 +21,7 @@ const Navbar = () => {
     <nav className="navbar" aria-label="Main navigation">
       <div className="nav-container">
         <div className="logo">
-          <Link to="/">
+          <Link to="/home">
             <img src={logo} alt="" />
           </Link>
         </div>
