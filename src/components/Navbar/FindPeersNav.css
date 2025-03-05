@@ -89,8 +89,8 @@
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 1rem;
-  width: 400px;
-  min-width: 320px;
+  width: fit-content;
+  min-width: 220px;
   max-width: 600px;
   z-index: 1000;
   animation: fadeIn 0.3s ease;
@@ -185,8 +185,8 @@
   background: white;
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  min-width: 320px;
+  width: 300px;
+  min-width: 220px;
   max-width: 600px;
   z-index: 1000;
   animation: fadeIn 0.3s ease;
