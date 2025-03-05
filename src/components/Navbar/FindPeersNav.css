@@ -317,13 +317,13 @@
   .fp-nav-right,
   .fp-search-bar,
   .fp-icons {
-    width: 100%;
+    /* width: 100%; */
     text-align: center;
     margin: 0.3rem 0;
   }
 
   .fp-nav-right {
-    justify-content: space-between;
+    justify-content: start;
   }
 
   .fp-logo .logo {

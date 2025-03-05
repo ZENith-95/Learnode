@@ -196,7 +196,7 @@ ul {
   }
 
   .auth-buttons {
-    display: none;
+    gap: 1rem;
   }
 
   .mobile-menu-button {
