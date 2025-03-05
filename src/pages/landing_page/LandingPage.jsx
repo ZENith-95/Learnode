@@ -18,10 +18,10 @@ const LandingPage = () => {
           <div className="hero-content">
             <div className="hero-left">
               <div className="hero-header">
-                <h2>Unlock Your Full Potential</h2>
+                <h2>Unlock Your Full <br/> Potential</h2>
               </div>
               <p>
-                Achieve Academic Excellence Alongside A Dedicated Community Of
+                Achieve Academic Excellence <br/> Alongside A Dedicated Community Of
                 Learners
               </p>
             </div>

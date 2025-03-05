@@ -97,7 +97,7 @@ const FindPeers = () => {
         </section>
 
         <section className="fp-may-know-section">
-          <h2>People you may know</h2>
+          <h2>Suggestions</h2>
           <div className="fp-cards-wrapper">
             <div className="fp-cards-scroll">
               {suggestions.map((suggestion) => (

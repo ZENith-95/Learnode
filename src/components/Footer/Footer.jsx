@@ -53,16 +53,13 @@ const Footer = () => {
           <h4>Quick Links</h4>
           <ul>
             <li>
-              <Link to="/peers">Home</Link>
+              <Link to="/find-peers">Find Peers</Link>
             </li>
             <li>
-              <Link to="/goals">Features</Link>
+              <Link to="/set-goals">Set Goals</Link>
             </li>
             <li>
-              <Link to="/resources">How it Works</Link>
-            </li>
-            <li>
-              <Link to="/mentor">Contact</Link>
+              <Link to="/feedback">Feedback</Link>
             </li>
           </ul>
         </div>

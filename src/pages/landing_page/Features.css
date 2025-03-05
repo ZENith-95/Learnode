@@ -1,13 +1,14 @@
 h2{
     color: black;
     font-size: 2.5rem;
+    text-align: center;
 }
 
 .showcase-cards {
   display: flex;
   justify-content: center;
   gap: 3rem;
-  margin: 2rem auto;
+  margin: 4rem auto;
   max-width: 1200px;
   padding: 0 1rem;
 }
@@ -15,7 +16,7 @@ h2{
 .showcase-card {
   /* Basic card styling */
   background: #fff;
-  max-width: 300px; /* Adjust as needed */
+  max-width: 400px; /* Adjust as needed */
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -61,10 +62,15 @@ h2{
   display: flex;
   align-items: center;
   gap: 1rem;margin-bottom: 1rem;
+  background-color: #fff;
 }
 
 .showcase-card button:hover {
-  background-color: #f8f8f8;
+  cursor: pointer;
+}
+
+.showcase-card button:hover img{
+  filter: contrast(.65);
   cursor: pointer;
 }
 

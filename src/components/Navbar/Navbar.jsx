@@ -3,10 +3,16 @@ import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import "./Navbar.css";
 import logo from "/logo.png";
+import Signing from "../../pages/signing/Signing";
+import Signup from "../../pages/signing/Signup";
+import ForgotPassword from "../../pages/signing/ForgotPassword";
 
 const Navbar = () => {
   const [menu, setMenu] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isSignupOpen, setIsSignupOpen] = useState(false);
+  const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
 
   const handleNavClick = (menuItem) => {
     setMenu(menuItem);
@@ -18,87 +24,76 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar" aria-label="Main navigation">
-      <div className="nav-container">
-        <div className="logo">
-          <Link to="/">
-            <img src={logo} alt="" />
-          </Link>
-        </div>
+    <>
+      <nav className="navbar" aria-label="Main navigation">
+        <div className="nav-container">
+          <div className="logo">
+            <Link to="/">
+              <img src={logo} alt="" />
+            </Link>
+          </div>
 
-        <button
-          className="mobile-menu-button"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu"
-          aria-expanded={isMobileMenuOpen}>
-          <span className="hamburger">
-            <FaBars />
-          </span>
-        </button>
+          <button
+            className="mobile-menu-button"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu"
+            aria-expanded={isMobileMenuOpen}>
+            <span className="hamburger">
+              <FaBars />
+            </span>
+          </button>
 
-        <ul className={`nav-links ${isMobileMenuOpen ? "active" : ""}`}>
-          <li>
-            <Link
-              to="/"
-              className={menu === "home" ? "active" : ""}
-              onClick={() => handleNavClick("home")}
-              aria-current={menu === "home" ? "page" : ""}>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/find-peers"
-              className={menu === "find-peers" ? "active" : ""}
-              onClick={() => handleLinkClick("find-peers")}
-              aria-current={menu === "find-peers" ? "page" : undefined}>
-              Find Peers
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/set-goals"
-              className={menu === "set-goals" ? "active" : ""}
-              onClick={() => handleLinkClick("set-goals")}
-              aria-current={menu === "set-goals" ? "page" : undefined}>
-              Set Goals
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/resources"
-              className={menu === "resources" ? "active" : ""}
-              onClick={() => handleLinkClick("resources")}
-              aria-current={menu === "resources" ? "page" : undefined}>
-              Resources
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/contact"
-              className={menu === "contact" ? "active" : ""}
-              onClick={() => handleLinkClick("contact")}
-              aria-current={menu === "contact" ? "page" : undefined}>
-              Contact
-            </Link>
-          </li>
-        </ul>
-        <div className="auth-buttons">
-          <Link
-            to="/signing"
-            className="sign-in-button"
-            onClick={() => handleNavClick("signin")}>
-            Log In
-          </Link>
-          <Link
-            to="/sign-up"
-            className="sign-up-button"
-            onClick={() => handleNavClick("signup")}>
-            Sign Up
-          </Link>
+          <ul className={`nav-links ${isMobileMenuOpen ? "active" : ""}`}>
+            <li>
+              <Link
+                to="/"
+                className={menu === "home" ? "active" : ""}
+                onClick={() => handleNavClick("home")}
+                aria-current={menu === "home" ? "page" : ""}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="#features"
+                className={menu === "Features" ? "active" : ""}
+                onClick={() => handleLinkClick("Features")}
+                aria-current={menu === "Features" ? "page" : undefined}>
+                Features
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to="#footer"
+                className={menu === "contact" ? "active" : ""}
+                onClick={() => handleLinkClick("contact")}
+                aria-current={menu === "contact" ? "page" : undefined}>
+                Contact
+              </Link>
+            </li>
+          </ul>
+          <div className="auth-buttons">
+            <button
+              className="sign-in-button"
+              onClick={() => setIsLoginOpen(true)}>
+              Log In
+            </button>
+            <button
+              className="sign-up-button"
+              onClick={() => setIsSignupOpen(true)}>
+              Sign Up
+            </button>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+      <Signing isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+      <Signup isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} />
+      <ForgotPassword
+        isOpen={isForgotPasswordOpen}
+        onClose={() => setIsForgotPasswordOpen(false)}
+      />
+    </>
   );
 };
 

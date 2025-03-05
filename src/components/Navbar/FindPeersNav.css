@@ -1,35 +1,358 @@
+/* ================= Header Container ================= */
 .fp-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  background-color: #fff;
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #ccc;
+  padding: 1rem 2rem;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Container for the left part (back button + logo) */
+.fp-nav-right {
+  display: flex;
+  align-items: center;
   gap: 1rem;
 }
 
-.fp-back-button,
+/* Back button */
+.fp-back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+}
+
+/* Logo styling */
+.fp-logo .logo {
+  width: 150px;
+  object-fit: contain;
+}
+
+/* ================= Center: Search Bar ================= */
+.fp-search-bar {
+  justify-self: right;
+}
+
+.fp-search-bar input {
+  display: none;
+  border: none;
+  background: transparent;
+  width: 100%;
+  outline: none;
+}
+
+.fp-search-bar img {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* ================= Right: Icons & Popups ================= */
+.fp-icons {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  position: relative; /* To help position popups relative to this container */
+}
+
+/* Notification button */
 .fp-notification-button {
   background: none;
   border: none;
   cursor: pointer;
   color: #000;
+}
+
+/* Profile button */
+.profile-button {
+  cursor: pointer;
+  background-color: #fff;
+  border: none;
+}
+
+.profile-button img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ================= Notification Popup ================= */
+.notifications-popup {
+  position: absolute;
+  right: -2rem;
+  top: 4rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  width: 400px;
+  min-width: 320px;
+  max-width: 600px;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.notifications-popup h3 {
+  text-decoration: underline;
+  font-size: 2rem;
+  border-bottom: 1px solid #eee;
+}
+
+.notification-item {
   display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.notification-item img {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.notification-item p {
+  flex: 1;
+  font-size: 0.9rem;
+  margin: 0;
+  color: #444;
+}
+
+.notification-actions {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+}
+
+.accept-btn {
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 0.6rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-family: kanit;
+}
+
+.decline-btn {
+  background: var(--white);
+  color: black;
+  border: none;
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-family: kanit;
+  outline: 2px solid black;
+}
+
+.notification-item button:hover {
+  background-color: rgb(3, 26, 104);
+  cursor: pointer;
+  color: #fff;
+}
+
+.notifications-popup .view-all {
+  width: 30%;
+  padding: 0.8rem 1rem;
+  margin-top: 1rem;
+  background-color: #fff;
+  border: 2px solid black;
+  border-radius: 7px;
+  cursor: pointer;
+  margin-left: 60%;
+}
+
+.notifications-popup .view-all:hover{
+  background-color: #000;
+  color: #fff;
+
+}
+
+/* ================= Profile Popup ================= */
+.profile-popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: -2rem;
+  top: 4rem;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  min-width: 320px;
+  max-width: 600px;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+  padding-bottom: 2rem;
+}
+
+.profile-popup-heading {
+  text-align: center;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 1rem 0px 0px 0px;
+  background-color: rgb(68, 115, 187);
+  color: #fff;
+}
+
+.profile-popup-info{
+  background-color: rgb(58, 149, 202);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-.fp-logo img {
-  height: 35px;
-  object-fit: contain;
+.profile-popup h3 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-align: center;
+  color: #fff;
 }
 
-.fp-search-bar {
-  flex: 1;
+.profile-popup .profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0.1rem 0;
+}
+
+.profile-popup p {
+  text-align: center;
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem 0;
+  color: #555;
+  color: white;
+  font-weight: 300;
+}
+
+.profile-actions{
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }
 
-.fp-search-bar input {
-  width: 100%;
-  padding: 0.4rem 0.6rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+.profile-actions .edit-profile{
+  margin: 5rem 0;
+  padding: .75rem 1.8rem;
+  background-color: var(--blue);
+  color: white;
+  border: none;
+  border-radius: .5rem;
+  font-family: kanit;
+}
+
+.profile-actions .logout{
+   margin: 5rem 0;
+  padding: .6rem 1.8rem;
+  background-color: var(--white);
+  color: rgb(0, 0, 0);
+  border: 2px solid black;
+  border-radius: .5rem;
+  font-family: kanit;
+}
+
+.profile-actions .edit-profile:hover{
+  background-color: #03174e;
+  cursor: pointer;
+}
+
+.profile-actions .logout:hover{
+  color: #fff;
+  background-color: #03174e;
+  
+}
+
+/* ================= Animations ================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= Responsive Styles ================= */
+
+/* Medium screens */
+@media (max-width: 900px) {
+  .fp-header {
+    padding: 1rem 2rem;
+  }
+  .fp-logo .logo {
+    width: 120px;
+  }
+  .fp-icons {
+    gap: 1.5rem;
+  }
+  .profile-button img,
+  .fp-search-bar img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Small screens (mobile) */
+@media (max-width: 750px) {
+  .fp-header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5rem 2rem;
+  }
+
+  /* Stack nav-right and search bar vertically */
+  .fp-nav-right,
+  .fp-search-bar,
+  .fp-icons {
+    width: 100%;
+    text-align: center;
+    margin: 0.3rem 0;
+  }
+
+  .fp-nav-right {
+    justify-content: space-between;
+  }
+
+  .fp-logo .logo {
+    width: 80px;
+  }
+
+  .fp-search-bar img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .fp-icons {
+    justify-content: space-around;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .fp-header {
+    padding: 1rem;
+  }
+
+  .fp-search-bar {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fp-search-bar {
+    display: none;
+  }
 }

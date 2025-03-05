@@ -11,7 +11,7 @@ import { width } from "@fortawesome/free-brands-svg-icons/fa42Group";
 
 const ShowcaseCards = () => {
   return (
-    <div className="features">
+    <div className="features" id="features">
       <h2>Learn About Our Simple Yet Powerful Features</h2>
       <section className="showcase-cards">
         <div className="showcase-card">
@@ -24,7 +24,7 @@ const ShowcaseCards = () => {
             <button>
               Find Peers{" "}
               <span>
-                <img style={{ width: "1rem" }} src={go_img} />
+                <img style={{ width: "1.4rem" }} src={go_img} />
               </span>
             </button>
           </Link>
@@ -38,7 +38,7 @@ const ShowcaseCards = () => {
           <button>
             Set Goals{" "}
             <span>
-              <img style={{ width: "1rem" }} src={go_img} />
+              <img style={{ width: "1.4rem" }} src={go_img} />
             </span>
           </button>
         </div>
@@ -51,7 +51,7 @@ const ShowcaseCards = () => {
           <button>
             Resources{" "}
             <span>
-              <img style={{ width: "1rem" }} src={go_img} />
+              <img style={{ width: "1.4rem"}} src={go_img} />
             </span>
           </button>
         </div>

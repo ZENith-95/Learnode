@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Signing.css";
 
-const Signup = () => {
+const Signup = ({ isOpen, onClose }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,14 +11,46 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
+  const validatePassword = (password) => {
+    return password.length >= 8;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
-    // Validation
+    // Form validation
     if (!firstName || !lastName || !email || !password || !confirmPassword) {
       setError("Please fill in all fields");
+      setLoading(false);
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setError("Please enter a valid email address");
+      setLoading(false);
+      return;
+    }
+
+    if (!validatePassword(password)) {
+      setError("Password must be at least 8 characters long");
       setLoading(false);
       return;
     }
@@ -37,6 +69,11 @@ const Signup = () => {
         email,
         password,
       });
+      if (onClose) {
+        onClose();
+      } else {
+        navigate("/signing");
+      }
     } catch (err) {
       setError("Failed to create account");
     } finally {
@@ -44,80 +81,96 @@ const Signup = () => {
     }
   };
 
+  const handleOverlayClick = (e) => {
+    if (e.target.className.includes("modal-overlay")) {
+      onClose();
+    }
+  };
+
+  if (!isOpen) return null;
+
   return (
-    <div className="sign-in">
-      <h2>Sign Up</h2>
-      {error && <div className="error-message">{error}</div>}
-
-      <form onSubmit={handleSubmit}>
-        <div className="name">
-          <div className="firstname input">
-            <label>First Name</label>
+    <div
+      className={`modal-overlay ${isOpen ? "active" : ""}`}
+      onClick={handleOverlayClick}>
+      <div className="sign-in">
+        <span className="close-button" onClick={onClose}>
+          &times;
+        </span>
+        <h2>Sign Up</h2>
+        {error && <div className="error-message">{error}</div>}
+        <form onSubmit={handleSubmit}>
+          <div className="name">
+            <div className="firstname input">
+              <label>First Name</label>
+              <input
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="First Name"
+                required
+              />
+            </div>
+            <div className="lastname input">
+              <label>Last Name</label>
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                placeholder="Last Name"
+                required
+              />
+            </div>
+          </div>
+          <div className="email input">
+            <label>Email</label>
             <input
-              placeholder="First Name"
-              type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
               required
             />
           </div>
-          <div className="lastname input">
-            <label>Last Name</label>
+          <div className="password input">
+            <label>Password</label>
             <input
-              placeholder="Last Name"
-              type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
               required
             />
           </div>
-        </div>
-        <div className="email input">
-          <label>Email</label>
-          <input
-            placeholder="Email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="password input">
-          <label>Password</label>
-          <input
-            placeholder="Password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <div className="password input">
-          <label>Confirm Password</label>
-          <input
-            placeholder="Confirm Password"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? "Creating Account..." : "Sign Up"}
-        </button>
-      </form>
+          <div className="password input">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirm Password"
+              required
+            />
+          </div>
+          <Link to="/home" className="link-button"> 
+            <button type="submit" disabled={loading}>
+              {loading ? "Creating Account..." : "Sign Up"}
+            </button>
+          </Link>
+        </form>
 
-      <p className="terms">
-        By clicking 'Sign Up' you confirm that you've read, understood, and
-        accepted our Terms and Conditions, and that you agree to receive updates
-        from our P2P Team.
-      </p>
+        <p className="terms">
+          By clicking 'Sign Up' you confirm that you've read, understood, and
+          accepted our Terms and Conditions, and that you agree to receive
+          updates from our P2P Team.
+        </p>
 
-      <div className="log-in-bottom">
-        <p>Already have an account? </p>
-        <Link to="/signing" className="sign-up">
-          Log In
-        </Link>
+        <div className="log-in-bottom">
+          <p>Already have an account? </p>
+          <button className="sign-in-link" onClick={onClose}>
+            Log In
+          </button>
+        </div>
       </div>
     </div>
   );

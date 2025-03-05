@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Signing.css";
-import { Link } from "react-router-dom";
 
-const ForgotPassword = () => {
+const ForgotPassword = ({ isOpen, onClose, onLoginClick }) => {
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,7 +24,6 @@ const ForgotPassword = () => {
     setSuccess(false);
     setLoading(true);
 
-    // Basic validation
     if (!email) {
       setError("Please enter your email");
       setLoading(false);
@@ -32,38 +41,54 @@ const ForgotPassword = () => {
     }
   };
 
+  const handleOverlayClick = (e) => {
+    if (e.target.className === "modal-overlay") {
+      onClose();
+    }
+  };
+
+  if (!isOpen) return null;
+
   return (
-    <div className="sign-in">
-      <h2>Forgot Password</h2>
-      <p className="forgot-password-message">
-        Enter your email address below and we’ll send you a code to log in and
-        reset your password
-      </p>
-      {error && <div className="error-message">{error}</div>}
-      {success && (
-        <div className="success-message">Password reset email sent!</div>
-      )}
-      <form onSubmit={handleSubmit}>
-        <div className="email input">
-          <label>Email</label>
-          <input
-            placeholder="Email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+    <div className="modal-overlay" onClick={handleOverlayClick}>
+      <div className="sign-in">
+        <span className="close-button" onClick={onClose}>
+          &times;
+        </span>
+        <h2>Reset Password</h2>
+        {error && <div className="error-message">{error}</div>}
+        {success && (
+          <div className="success-message">
+            Password reset instructions sent to your email!
+          </div>
+        )}
+        <form onSubmit={handleSubmit}>
+          <div className="email input">
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <button type="submit" disabled={loading}>
+            {loading ? "Sending..." : "Reset Password"}
+          </button>
+        </form>
+        <hr />
+        <div className="log-in-bottom">
+          <p>Remember your password? </p>
+          <button
+            className="sign-in-button"
+            onClick={() => {
+              onClose();
+              onLoginClick();
+            }}>
+            Log In
+          </button>
         </div>
-        <button type="submit" disabled={loading}>
-          {loading ? "Sending..." : "Submit"}
-        </button>
-      </form>
-      <hr />
-      <div className="log-in-bottom">
-        <p>Remember your password? </p>
-        <Link to="/signing">
-          <button className="sign-up">Log In</button>
-        </Link>
       </div>
     </div>
   );
