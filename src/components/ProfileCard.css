@@ -1,0 +1,168 @@
+.profile-card {
+   border: 1px solid #e0e0e0;
+   border-radius: 12px;
+   max-width: 400px;
+   font-family: "Arial", sans-serif;
+   position: relative;
+   background: white;
+   height: 20rem;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: space-between;
+   width: 400px;
+   overflow-y: auto;
+   transform: translateX(100%);
+   animation: slideIn 0.3s forwards;
+   position: relative;
+   margin-top: 20rem;
+ }
+ 
+ .profile-header {
+   margin-bottom: 1.5rem;
+   display: flex;
+   align-items: center;
+   justify-items: center;
+   flex-direction: column;
+   position: absolute;
+   margin-top: 2rem;
+ }
+ 
+ .profile-name {
+   font-size: 1rem;
+   margin: 0 0 0.25rem 0;
+   font-weight: 600;
+ }
+ 
+ .profile-title {
+   color: #666;
+   margin: 0;
+   font-size: .6rem;
+ }
+ 
+ .profile-actions {
+   display: flex;
+   padding-top: 10rem;
+   position: relative;
+   bottom: 0;
+   gap: 0.75rem;
+   width: 80%;
+ }
+ 
+ .network-btn {
+   background-color: #1a1a1a;
+   color: white;
+   border: none;
+   padding: 0.5rem 1rem;
+   border-radius: 8px;
+   font-size: 0.9rem;
+   cursor: pointer;
+   border: 2px solid #1a1a1a;
+
+   flex: 1;
+ }
+ 
+ .message-btn {
+   background-color: white;
+   color: #1a1a1a;
+   border: 2px solid #1a1a1a;
+   padding: 0.2rem .5rem;
+   border-radius: 8px;
+   font-size: 1rem;
+   cursor: pointer;
+   flex: 1;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-family: kanit;
+ }
+
+ button:hover{
+    background-color: black;
+    color: white;
+ }
+ 
+ .education-section {
+   border-top: 1px solid #e0e0e0;
+   padding-top: 1rem;
+   display: flex;
+   flex-direction: column;
+ }
+ 
+ .education-label {
+   color: #666;
+   font-size: 0.9rem;
+   margin-bottom: 0.25rem;
+ }
+ 
+ .education-value {
+   font-weight: 500;
+   font-size: 1rem;
+ }
+ 
+ .profile-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, 0.01);
+   display: flex;
+   justify-content: flex-end;
+   z-index: 1000;
+ }
+ 
+ .profile-avatar {
+   width: 7rem;
+   height: 7rem;
+   border-radius: 50%;
+   margin-bottom: 1rem;
+   object-fit: cover;
+   border: 3px solid #e0e0e0;
+ }
+ 
+ .profile-details {
+   margin-top: 2rem;
+ }
+ 
+ .detail-item {
+   display: flex;
+   justify-content: space-between;
+   padding: 1rem 0;
+   border-bottom: 1px solid #eee;
+ }
+ 
+ .detail-label {
+   color: #666;
+   font-weight: 500;
+ }
+ 
+ .profile-heading{
+   width: 100%;
+   padding: 1rem 2rem;
+   color: #fff;
+   background-color: blue;
+   height: 4rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+ }
+ 
+ .close-profile{
+   background-color: transparent;
+   border: none;
+   color: #fff;
+ }
+ 
+ .detail-value {
+   color: #333;
+ }
+ 
+ @keyframes slideIn {
+   from {
+     transform: translateX(100%);
+   }
+   to {
+     transform: translateX(0);
+   }
+ }
