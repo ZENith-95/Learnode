@@ -51,13 +51,28 @@ a {
   padding: 0;
 }
 
+.nav-container .div{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-container .div h5{
+  color: #000000;
+  font-size: 0.7rem;
+  font-weight: 400;
+}
+
 /* Logo styles */
+
 .logo {
   width: 2.5rem;
   height: 2.5rem;
   flex-shrink: 0;
   transition: all var(--transition-speed) ease;
+  /* display: flex; */
 }
+
 
 .logo img {
   width: 100%;
@@ -70,7 +85,7 @@ a {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 5rem;
   transition: all var(--transition-speed) ease;
 }
 
@@ -84,7 +99,7 @@ ul {
 
 .nav-links a {
   color: var(--black);
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 500;
   transition: all var(--transition-speed) ease;
 }
@@ -116,7 +131,6 @@ ul {
 
 
 .sign-in-button {
-  font-family: kanit;
   color: var(--black);
   background: transparent;
   border: 2px solid var(--black);
@@ -127,17 +141,16 @@ ul {
   transition: all var(--transition-speed) ease;
 }
 
-.sign-up-button {
-  font-family: Kanit;
+/* .sign-up-button {
   color: var(--white);
   background: var(--blue);
   border: none;
-   padding: 0.6rem 1.2rem;
+   padding: 0.5rem 1.2rem;
   border-radius: 0.5rem;
   font-size: 0.9rem;
   font-weight: 500;
   transition: all var(--transition-speed) ease;
-}
+} */
 
 /* Mobile menu button */
 .mobile-menu-button {
@@ -196,7 +209,7 @@ ul {
   }
 
   .auth-buttons {
-    gap: 1rem;
+    display: none;
   }
 
   .mobile-menu-button {

@@ -1,15 +1,15 @@
 /* Base variables */
 :root {
   --header-height: 4rem;
-  --header-height-mobile: 3.5rem;
-  --card-min-width: clamp(140px, 45vw, 180px);
-  --card-max-width: clamp(160px, 60vw, 200px);
-  --avatar-size: clamp(40px, 8vw, 50px);
-  --card-avatar-size: clamp(60px, 12vw, 80px);
-  --spacing-unit: clamp(0.5rem, 2vw, 1rem);
+  --card-min-width: 180px;
+  --card-max-width: 200px;
+  --avatar-size: 50px;
+  --card-avatar-size: 80px;
   --primary-color: #000;
   --secondary-color: #fff;
   --border-color: #ccc;
+  --shadow-color: rgba(0, 0, 0, 0.07);
+  --text-color: #333;
   --transition-speed: 0.3s;
 }
 
@@ -41,7 +41,7 @@
 
 .fp-main {
   flex: 1;
-  padding: 2rem 0;
+  padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
@@ -110,8 +110,8 @@
 }
 
 .fp-avatar {
-  width: 7rem;
-  height: 7rem;
+  width: 50px;
+  height: 50px;
   object-fit: cover;
   border-radius: 50%;
   margin-right: 0.8rem;
@@ -130,15 +130,12 @@
 }
 
 .fp-view-all-btn {
-  margin-top: 2rem;
+  margin-top: 1rem;
   background-color: #fff;
   border: 2px solid #000000;
   padding: 0.8rem 2rem;
   border-radius: 0.5rem;
   cursor: pointer;
-  font-size: 1.3rem;
-  font-family: kanit;
-  font-weight: 500;
 }
 
 /* "People you may know" section */
@@ -167,10 +164,8 @@
 }
 
 .fp-may-know-section h2 {
-  font-size: 3rem;
-  font-weight: 500;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
-  text-align: left;
 }
 
 .fp-cards-wrapper {
@@ -207,8 +202,8 @@
   }
 
   .fp-card-avatar {
-    width: 6rem;
-    height: 4rem;
+    width: 60px;
+    height: 60px;
   }
 }
 
@@ -236,15 +231,14 @@
   width: 22rem;
   height: 13rem;
   object-fit: cover;
-  border-radius: 1rem;
+  border-radius: 50%;
   margin-bottom: 0.5rem;
 }
 
 .fp-network-btn {
-  margin-top: 2rem;
-  background-color: rgb(30, 30, 102);
+  margin-top: 0.5rem;
+  background-color: var(--blue);
   color: #fff;
-  font-family: kanit;
   border: none;
   padding: 0.6rem 2rem;
   cursor: pointer;
@@ -304,14 +298,13 @@
 
 .fp-next-arrow {
   position: absolute;
-  right: -2rem;
-  background: #4c61dd;
-  border: none;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ccc;
   border-radius: 50%;
   cursor: pointer;
-  padding: 1rem;
+  padding: 0.4rem;
   display: flex;
-  color: #fff;
   align-items: center;
   justify-content: center;
   margin-right: 0.5rem;
