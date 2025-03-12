@@ -20,10 +20,14 @@ const Navbar = () => {
   return (
     <nav className="navbar" aria-label="Main navigation">
       <div className="nav-container">
-        <div className="logo">
-          <Link to="/home">
-            <img src={logo} alt="" />
-          </Link>
+        <div className="div">
+          <div className="logo">
+            <Link to="/home">
+               <img src={logo} alt="" />
+               
+            </Link>
+        </div>
+        <h5>Study Circle</h5>
         </div>
 
         <button
@@ -48,36 +52,18 @@ const Navbar = () => {
           </li>
           <li>
             <Link
-              to="/find-peers"
-              className={menu === "find-peers" ? "active" : ""}
-              onClick={() => handleLinkClick("find-peers")}
-              aria-current={menu === "find-peers" ? "page" : undefined}>
-              Find Peers
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/set-goals"
-              className={menu === "set-goals" ? "active" : ""}
-              onClick={() => handleLinkClick("set-goals")}
-              aria-current={menu === "set-goals" ? "page" : undefined}>
-              Set Goals
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/resources"
-              className={menu === "resources" ? "active" : ""}
-              onClick={() => handleLinkClick("resources")}
-              aria-current={menu === "resources" ? "page" : undefined}>
-              Resources
+              to="/how-it-works"
+              className={menu === "how-it-works" ? "active" : ""}
+              onClick={() => handleNavClick("how-it-work")}
+              aria-current={menu === "how-it-work" ? "page" : undefined}>
+              How It Works
             </Link>
           </li>
           <li>
             <Link
               to="/contact"
               className={menu === "contact" ? "active" : ""}
-              onClick={() => handleLinkClick("contact")}
+              onClick={() => handleNavClick("contact")}
               aria-current={menu === "contact" ? "page" : undefined}>
               Contact
             </Link>
@@ -89,12 +75,6 @@ const Navbar = () => {
             className="sign-in-button"
             onClick={() => handleNavClick("signin")}>
             Log In
-          </Link>
-          <Link
-            to="/sign-up"
-            className="sign-up-button"
-            onClick={() => handleNavClick("signup")}>
-            Sign Up
           </Link>
         </div>
       </div>
