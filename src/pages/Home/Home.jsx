@@ -1,44 +1,32 @@
 import React from "react";
-import "../landing_page/LandingPage.css";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import FindPeersHeader from "../../components/Navbar/FindPeersNav";
-import Footer from "../../components/Footer/Footer";
-import HeroBg from "/hero_img.png";
-import Features from "../landing_page/Features";
+
 
 const Home = () => {
-  const [email, setEmail] = useState("");
-
   return (
-    <>
-      <FindPeersHeader />
-      <div className="landing-page">
-        <section className="hero" id="hero">
-          <div className="hero-content">
-            <div className="hero-left">
-              <div className="hero-header">
-                <h2>
-                  Unlock Your Full <br /> Potential
-                </h2>
-              </div>
-              <p>
-                Achieve Academic Excellence <br /> Alongside A Dedicated
-                Community Of Learners
-              </p>
-            </div>
-            <div className="hero-right">
-              <div className="hero-right-img">
-                <img src={HeroBg} alt="" />
-              </div>
-            </div>
+    <div className="landing-page">
+      <section className="hero" id="hero">
+        <div className="hero-content">
+          <div className="hero-left">
+            <h1>Unlock Your Full Potential</h1>
+            <p>
+              Master any skill through the power of collaborative P2P learning.
+              Join a community where every lesson is personalized, progress is
+              celebrated, and knowledge sharing becomes an adventure.
+            </p>
           </div>
-        </section>
-        <Features />
-      </div>
-      <Footer />
-    </>
+          <div className="hero-right"></div>
+          <Link to="#howitworks" className="cta">
+            <button>Join the Learning Revolution</button>
+          </Link>
+        </div>
+      </section>
+      <section className="features" id="features">
+        <div className="container"></div>
+      </section>
+    </div>
   );
 };
 
 export default Home;
-
