@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "./FindPeers.css";
 import FindPeersHeader from "../../components/Navbar/FindPeersNav";
 import ProfileCard from "../../components/Profile";
+import ChatPopup from "../../components/ChatPopup/ChatPopup";
 import { useNavigate } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import avatar1 from "../../assets/avatar1.png";
@@ -27,6 +28,7 @@ const FindPeers = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
   const [selectedPeer, setSelectedPeer] = useState(null);
 
   const scrollContainerRef = useRef(null);
@@ -37,9 +39,16 @@ const FindPeers = () => {
       name: "Belinda Adzah",
       about: "Community, Performance And Network",
       avatar: peer2,
+      education: "University",
     },
     { id: 2, name: "Belinda Amehgbor", about: "Student", avatar: peer1 },
-    { id: 3, name: "Adams Nicholas", about: "Graphic Designer", avatar: peer3 },
+    {
+      id: 3,
+      name: "Adams Nicholas",
+      about: "Graphic Designer",
+      avatar: peer3,
+      education: "University",
+    },
   ]);
 
   const [suggestions, setSuggestions] = useState([
@@ -99,6 +108,18 @@ const FindPeers = () => {
     }
   }, []);
 
+  useEffect(() => {
+    // Control body overflow based on modal states
+    if (isProfileOpen || isChatOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isProfileOpen, isChatOpen]);
+
   const handleSearch = (query) => {
     setSearchQuery(query);
     // Add search logic here
@@ -147,6 +168,16 @@ const FindPeers = () => {
     setIsProfileOpen(true);
   };
 
+  const handleOpenChat = (peer) => {
+    setSelectedPeer(peer);
+    setIsProfileOpen(false); // Close profile modal
+    setIsChatOpen(true); // Open chat modal
+  };
+
+  const handleCloseChat = () => {
+    setIsChatOpen(false);
+  };
+
   return (
     <div className="fp-page">
       <FindPeersHeader onSearch={handleSearch} />
@@ -160,7 +191,7 @@ const FindPeers = () => {
               <li key={peer.id} className="fp-peer-item">
                 <div className="fp-peer-left">
                   <img
-                    src={peer.avatar}
+                    src={peer.avatar || "/placeholder.svg"}
                     alt={`${peer.name}'s avatar`}
                     className="fp-avatar"
                   />
@@ -186,7 +217,7 @@ const FindPeers = () => {
         </section>
 
         <section className="fp-may-know-section">
-          <h2>People you may know</h2>
+          <h2>Suggestions</h2>
           <div className="fp-cards-wrapper">
             {canScrollLeft && (
               <button
@@ -200,14 +231,14 @@ const FindPeers = () => {
               {suggestions.map((suggestion) => (
                 <div key={suggestion.id} className="fp-card">
                   <img
-                    src={suggestion.avatar}
+                    src={suggestion.avatar || "/placeholder.svg"}
                     alt={`${suggestion.name}'s avatar`}
                     className="fp-card-avatar"
                   />
                   <h3>{suggestion.name}</h3>
                   <div className="suggestion-info">
                     <span>
-                      <img src={suggestion.about_img} />
+                      <img src={suggestion.about_img || "/placeholder.svg"} />
                     </span>
 
                     <p>{suggestion.about}</p>
@@ -233,6 +264,7 @@ const FindPeers = () => {
         </section>
       </main>
 
+      {/* Profile Card Modal */}
       <ProfileCard
         isOpen={isProfileOpen}
         onClose={() => {
@@ -240,7 +272,20 @@ const FindPeers = () => {
           setSelectedPeer(null);
         }}
         profileData={selectedPeer}
+        onMessageClick={handleOpenChat}
       />
+
+      {/* Chat Popup Modal */}
+      {isChatOpen && (
+        <div className="chat-popup-overlay">
+          <ChatPopup
+            isOpen={isChatOpen}
+            onClose={handleCloseChat}
+            peer={selectedPeer}
+          />
+        </div>
+      )}
+
       <Footer />
     </div>
   );

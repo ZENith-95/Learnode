@@ -64,17 +64,17 @@ const FindPeersHeader = () => {
           className="fp-back-button"
           onClick={handleBackClick}
           aria-label="Go back">
-          <FaArrowLeft size={18} />
+          <FaArrowLeft size={14} />
         </button>
         <div className="fp-logo">
           <Link to="/">
             <img src="/logo.png" alt="App Logo" className="logo" />
           </Link>
         </div>
-        <div className="fp-search-bar">
+        {/* <div className="fp-search-bar">
           <img src={searchicon} alt="Search" />
           <input type="text" placeholder="Search peers..." />
-        </div>
+        </div> */}
       </div>
 
       <div className="fp-icons">

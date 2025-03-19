@@ -35,12 +35,14 @@ const ShowcaseCards = () => {
           <p>
             Link up with like-minded peers who share your passion for learning
           </p>
-          <button>
-            Set Goals{" "}
-            <span>
-              <img style={{ width: "1.4rem" }} src={go_img} />
-            </span>
-          </button>
+          <Link to={"/groups"}>
+            <button>
+              Groups{" "}
+              <span>
+                <img style={{ width: "1.4rem" }} src={go_img} />
+              </span>
+            </button>
+          </Link>
         </div>
         <div className="showcase-card">
           <img src={cardImage3} alt="Goal Setting" />

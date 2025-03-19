@@ -24,21 +24,6 @@
   background-color: #fff;
 }
 
-/* ================= HEADER ================= */
-.fp-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--secondary-color);
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--border-color);
-  gap: 1rem;
-  height: var(--header-height);
-  width: 100%;
-}
 
 .fp-main {
   flex: 1;
@@ -165,8 +150,8 @@
 }
 
 .fp-may-know-section h2 {
-  font-size: 1.5rem;
   margin-bottom: 1rem;
+  text-decoration: underline;
 }
 
 .fp-cards-wrapper {
@@ -233,6 +218,7 @@
   height: 13rem;
   object-fit: cover;
   margin-bottom: 0.5rem;
+  border-radius: .7rem;
 }
 
 .fp-network-btn {
@@ -246,6 +232,16 @@
   border-radius: 0.5rem;
   font-size: 1.3rem;
   width: 85%;
+  font-family: kanit;
+  height: fit-content;
+  
+}
+
+.fp-network-btn:hover {
+  background-color: #010a3fe7;
+  border: 2px solid #010a3fe7;
+  
+  
 }
 
 /* Optional arrow button for horizontal scroll */
@@ -254,7 +250,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: white;
+  background: rgb(255, 255, 255);
   border: 1px solid #eee;
   border-radius: 50%;
   width: 40px;
@@ -333,7 +329,6 @@
   .fp-header {
     padding: 0.5rem;
     height: var(--header-height-mobile);
-    flex-wrap: wrap;
   }
 
   .fp-logo img {
@@ -372,7 +367,6 @@
   }
 
   .fp-header {
-    flex-wrap: wrap;
     padding: 0.5rem;
     gap: 0.5rem;
   }
@@ -386,6 +380,15 @@
 
   .fp-peer-item {
     padding: 0.75rem;
+    flex-direction: column;
+  }
+
+  .view-profile-btn{
+    margin-left: 50%;
+  }
+
+  .fp-card-avatar{
+    width: 100%;
   }
 
   .fp-nav-right {
@@ -422,6 +425,8 @@
   .fp-search-bar {
     max-width: 300px;
   }
+
+ 
 
   .notifications-popup,
   .profile-popup {

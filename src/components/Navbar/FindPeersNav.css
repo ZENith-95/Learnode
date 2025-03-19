@@ -15,13 +15,16 @@
 .fp-nav-right {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
+  width: fit-content;
 }
 
 /* Back button */
 .fp-back-button {
   background: none;
-  border: none;
+  border: .9px solid grey;
+  border-radius: 50%;
+  padding: 0.1rem 0.2rem;
   cursor: pointer;
   color: #000;
 }
@@ -54,9 +57,10 @@
 .fp-icons {
   display: flex;
   align-items: center;
-  gap: 4rem;
+  gap: 2rem;
   position: relative; /* To help position popups relative to this container */
 }
+
 
 /* Notification button */
 .fp-notification-button {
@@ -64,6 +68,10 @@
   border: none;
   cursor: pointer;
   color: #000;
+}
+
+.fp-notification-button:hover{
+  border-radius: 7px;
 }
 
 /* Profile button */
@@ -78,6 +86,12 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.profile-button:hover{
+  border-radius: 7px;
+  background-color: transparent;
+  border: none;
 }
 
 /* ================= Notification Popup ================= */
@@ -134,7 +148,7 @@
   background: var(--blue);
   color: white;
   border: none;
-  padding: 0.6rem 2rem;
+  padding: 0.5rem 2rem;
   border-radius: 0.5rem;
   font-size: 1rem;
   font-family: kanit;
@@ -143,17 +157,18 @@
 .decline-btn {
   background: var(--white);
   color: black;
-  border: none;
+  border: 2px solid black;
   padding: 0.5rem 2rem;
   border-radius: 0.5rem;
   font-size: 1rem;
   font-family: kanit;
-  outline: 2px solid black;
 }
 
 .notification-item button:hover {
   background-color: rgb(3, 26, 104);
   cursor: pointer;
+  border: 2px solid #03174e;
+
   color: #fff;
 }
 
@@ -185,7 +200,7 @@
   background: white;
   border-radius: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 300px;
+  width: 23rem;
   min-width: 220px;
   max-width: 600px;
   z-index: 1000;
@@ -239,11 +254,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .profile-actions .edit-profile{
-  margin: 5rem 0;
   padding: .75rem 1.8rem;
   background-color: var(--blue);
   color: white;
@@ -253,7 +267,6 @@
 }
 
 .profile-actions .logout{
-   margin: 5rem 0;
   padding: .6rem 1.8rem;
   background-color: var(--white);
   color: rgb(0, 0, 0);
@@ -265,11 +278,14 @@
 .profile-actions .edit-profile:hover{
   background-color: #03174e;
   cursor: pointer;
+  border: 2px solid #03174e;
 }
 
 .profile-actions .logout:hover{
   color: #fff;
   background-color: #03174e;
+  border: 2px solid #03174e;
+
   
 }
 
@@ -308,23 +324,10 @@
 /* Small screens (mobile) */
 @media (max-width: 750px) {
   .fp-header {
-    flex-direction: column;
-    align-items: stretch;
+    
     padding: 0.5rem 2rem;
   }
 
-  /* Stack nav-right and search bar vertically */
-  .fp-nav-right,
-  .fp-search-bar,
-  .fp-icons {
-    /* width: 100%; */
-    text-align: center;
-    margin: 0.3rem 0;
-  }
-
-  .fp-nav-right {
-    justify-content: start;
-  }
 
   .fp-logo .logo {
     width: 80px;
@@ -354,5 +357,12 @@
 @media (max-width: 480px) {
   .fp-search-bar {
     display: none;
+  }
+
+  .fp-header {
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }

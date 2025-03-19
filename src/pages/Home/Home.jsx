@@ -1,5 +1,5 @@
 import React from "react";
-import "../landing_page/LandingPage.css";
+import "./Home.css";
 import { useState } from "react";
 import FindPeersHeader from "../../components/Navbar/FindPeersNav";
 import Footer from "../../components/Footer/Footer";
