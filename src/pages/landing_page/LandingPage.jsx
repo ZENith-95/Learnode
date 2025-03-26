@@ -10,50 +10,66 @@ import img3 from "/public/connect.png";
 import signup from "/public/signup.png";
 import share from "/share.png";
 import engage from "/engage.png";
+import { useState } from "react";
+import Signup from "../signing/Signup";
 
 const LandingPage = () => {
+    const [isSignupOpen, setIsSignupOpen] = useState(false);
+  const [showSignupModal, setShowSignupModal] = useState(false);
   // const [email, setEmail] = useState("");
 
   return (
     <>
       <Navbar />
       <div className="landing-page">
-        {/* Hero Section */}
-        <section className="hero-section">
-          <div className="hero-container">
-            <div className="hero-image-container">
-              <img
-                src={img1}
-                alt="People connecting puzzle pieces"
-                className="hero-image"
-              />
+          <section className="hero-section">
+            <div className="hero-container">
+              <div className="hero-image-container">
+                <img
+            src={img1}
+            alt="People connecting puzzle pieces"
+            className="hero-image"
+                />
+              </div>
+              <div
+                className="hero-content"
+                style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "start",
+            boxShadow: "none",
+                }}>
+                <h1 className="hero-title">
+            Connect, Share, <br />
+            And Thrive Together—The Power <br />
+            Of P2P In Your Hands!
+                </h1>
+                <p className="hero-description">
+            Unlocking Opportunities For Individuals To Share Resources,
+            Talents, And Services—Building Trust Through Meaningful
+            Collaboration.
+                </p>
+                <div
+            className="get-started-button"
+            onClick={() => setShowSignupModal(true)} // Ensure this updates the state
+                >
+            Get Started
+                </div>
+                {/* Render the Signup modal conditionally */}
+                {showSignupModal && (
+                  <Signup
+                    isOpen={showSignupModal} // Pass the state to the Signup component
+                    onClose={() => setShowSignupModal(false)} // Close the modal on action
+                  />
+                )}
+              </div>
             </div>
-            <div
-              className="hero-content"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "start",
-                boxShadow: "none",
-              }}>
-              <h1 className="hero-title">
-                Connect, Share, <br />
-                And Thrive Together—The Power <br />
-                Of P2P In Your Hands!
-              </h1>
-              <p className="hero-description">
-                Unlocking Opportunities For Individuals To Share Resources,
-                Talents, And Services—Building Trust Through Meaningful
-                Collaboration.
-              </p>
-              <div className="get-started-button">Get Started</div>
-            </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Guide Section */}
-        <section className="guide-section" id="how-it-works">
+          {/* Guide Section */}
+          {showSignupModal && <Signup onClose={() => setShowSignupModal(false)} />}
+        <section className="guide-section" id="howitworks">
           <div className="section-container">
             <h2 className="section-title">Step-By-Step Guide</h2>
             <div className="steps-container">
@@ -127,6 +143,8 @@ const LandingPage = () => {
           </div>
         </section>
       </div>
+      <Signup isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} />
+
 
       <Footer />
     </>

@@ -11,7 +11,6 @@ const Navbar = () => {
   const [menu, setMenu] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const [isSignupOpen, setIsSignupOpen] = useState(false);
   const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
 
   const handleNavClick = (menuItem) => {
@@ -27,11 +26,16 @@ const Navbar = () => {
     <>
       <nav className="navbar" aria-label="Main navigation">
         <div className="nav-container">
+          <Link to='/' className="logo-container">
           <div className="logo">
-            <Link to="/">
               <img src={logo} alt="" />
-            </Link>
+        
           </div>
+          <div className="logo-text">
+            <h4>Study Circle</h4>
+          </div>
+          </Link>
+           
 
           <button
             className="mobile-menu-button"
@@ -55,11 +59,11 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                to="#features"
-                className={menu === "Features" ? "active" : ""}
-                onClick={() => handleLinkClick("Features")}
-                aria-current={menu === "Features" ? "page" : undefined}>
-                Features
+                to="#howitworks"
+                className={menu === "How it Works" ? "active" : ""}
+                onClick={() => handleLinkClick("How It Works")}
+                aria-current={menu === "How It Works" ? "page" : undefined}>
+                How It Works
               </Link>
             </li>
 
@@ -79,16 +83,10 @@ const Navbar = () => {
               onClick={() => setIsLoginOpen(true)}>
               Log In
             </button>
-            <button
-              className="sign-up-button"
-              onClick={() => setIsSignupOpen(true)}>
-              Sign Up
-            </button>
           </div>
         </div>
       </nav>
       <Signing isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
-      <Signup isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} />
       <ForgotPassword
         isOpen={isForgotPasswordOpen}
         onClose={() => setIsForgotPasswordOpen(false)}

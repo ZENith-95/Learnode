@@ -2,14 +2,28 @@ import React, { useState, useRef, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./GroupPage.css";
 import {
-  FaArrowLeft,
-  FaBell,
-  FaCog,
   FaUserCircle,
   FaPaperPlane,
   FaMicrophone,
 } from "react-icons/fa";
 import Footer from "../../components/Footer/Footer";
+import GroupHeader from "./GroupHeader";
+import atama from "/atama.png";
+import agbavor from "/agbavor.png";
+import agbavitor from "/agbavitor.png";
+import dzah from "/dzah.png";
+import dzidefo from "/dzidefo.png"
+import dzahevans from "/dzahevans.png"
+import agbleze from "/agbleze.png"
+import dzokotoromeo from '/dzokotoromeo.png'
+import dzokoto from "/dzokoto.png"
+import karl from "/karl.png"
+import esinu from "/esinu.png"
+import sitsofe from "/sitsofe.png"
+import resource from "/resource.png"
+import file_black from "/file-black.png"
+import file_red from "/file-red.png"
+
 
 const GroupPage = () => {
   const { groupId } = useParams();
@@ -27,22 +41,22 @@ const GroupPage = () => {
         {
           id: 1,
           name: "Atama Jacob",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: atama,
         },
         {
           id: 2,
           name: "Agbavor Simon",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: agbavor,
         },
         {
           id: 3,
           name: "Agbavitor Woelinam",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: agbavitor,
         },
         {
           id: 4,
           name: "Dzah Precious",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: dzah,
         },
       ],
       messages: [
@@ -87,22 +101,22 @@ const GroupPage = () => {
         {
           id: 1,
           name: "Agbleze Courage",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: agbleze,
         },
         {
           id: 2,
           name: "Dzah Evans",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: dzahevans,
         },
         {
           id: 3,
           name: "Dzidefo Cynthia",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: dzidefo,
         },
         {
           id: 4,
           name: "Esinu Vivian",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: esinu,
         },
       ],
       messages: [
@@ -147,22 +161,22 @@ const GroupPage = () => {
         {
           id: 1,
           name: "Sitsofe Emmanuella",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: sitsofe,
         },
         {
           id: 2,
           name: "Dzokoto Jordan",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: dzokoto,
         },
         {
           id: 3,
           name: "Karl Jessica",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: karl,
         },
         {
           id: 4,
           name: "Dzokoto Romeo",
-          avatar: "/placeholder.svg?height=40&width=40",
+          avatar: dzokotoromeo,
         },
       ],
       messages: [
@@ -225,7 +239,7 @@ const GroupPage = () => {
     // Simulate loading
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1000);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -261,29 +275,7 @@ const GroupPage = () => {
   return (
     <div className="group-page">
       {/* Header */}
-      <header className="group-header">
-        <div className="header-left">
-          <button className="back-button" onClick={handleBackClick}>
-            <FaArrowLeft />
-          </button>
-          <h1 className="group-title">{group.name}</h1>
-          <div className="member-count">
-            <FaUserCircle />
-            <span>{group.members} Members</span>
-          </div>
-        </div>
-        <div className="header-right">
-          <button className="icon-button">
-            <FaBell />
-          </button>
-          <button className="icon-button">
-            <FaCog />
-          </button>
-          <button className="icon-button user-icon">
-            <FaUserCircle />
-          </button>
-        </div>
-      </header>
+      <GroupHeader />
 
       {/* Main Content */}
       <main className="group-main">
@@ -297,11 +289,6 @@ const GroupPage = () => {
             {group.messages.map((msg) => (
               <div key={msg.id} className="message-container">
                 <div className="message-sender">
-                  <img
-                    src={msg.avatar || "/placeholder.svg"}
-                    alt={msg.sender}
-                    className="sender-avatar"
-                  />
                   <div className="sender-info">
                     <span className="sender-name">{msg.sender}</span>
                   </div>
@@ -316,20 +303,23 @@ const GroupPage = () => {
           </div>
           <form
             className="message-input-container"
-            onSubmit={handleSendMessage}>
-            <button type="button" className="mic-button">
-              <FaMicrophone />
-            </button>
-            <input
-              type="text"
-              placeholder="Type a message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              className="message-input"
-            />
-            <button type="submit" className="send-button">
-              <FaPaperPlane />
-            </button>
+            onSubmit={handleSendMessage}
+          >
+            <div className="message-input-container-items">
+              <button type="button" className="mic-button">
+                <FaMicrophone />
+              </button>
+              <input
+                type="text"
+                placeholder="Type a message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="message-input"
+              />
+              <button type="submit" className="send-button">
+                <FaPaperPlane />
+              </button>
+            </div>
           </form>
         </div>
 
@@ -358,7 +348,7 @@ const GroupPage = () => {
 
           <div className="sidebar-section">
             <h2 className="sidebar-title">
-              <i className="fas fa-file-alt"></i>
+              <i className="fas fa-file-alt"><img src={resource} alt="" /></i>
               <span>Resources</span>
             </h2>
             <div className="resources-list">
@@ -366,9 +356,9 @@ const GroupPage = () => {
                 <div key={resource.id} className="resource-item">
                   <div className="resource-icon">
                     {resource.type === "PDF" ? (
-                      <i className="fas fa-file-pdf"></i>
+                      <i className="fas fa-file-pdf"><img src={file_red} alt="" /></i>
                     ) : (
-                      <i className="fas fa-file-word"></i>
+                      <i className="fas fa-file-word"><img src={file_black} alt="" /></i>
                     )}
                   </div>
                   <div className="resource-info">

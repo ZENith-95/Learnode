@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import "./footer.css";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faFacebook, faInstagram, faLinkedin, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
-import { faFacebook, faInstagram, faLinkedin, faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import logo from "/logo.png";
+import { Linkedin, Instagram, Youtube, Twitter } from "lucide-react"; // Import icons from lucide-react
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -25,7 +22,6 @@ const Footer = () => {
     }
 
     try {
-      // Add your subscription logic here
       console.log("Subscribing email:", email);
       setSubscribed(true);
       setEmail("");
@@ -41,11 +37,7 @@ const Footer = () => {
       <div className="footer-desktop">
         <div className="footer-section logo-section">
           <Link to="/">
-            <img
-              src= {logo}
-              alt="Logo"
-              className="footer-logo"
-            />
+            <img src={logo} alt="Logo" className="footer-logo" />
           </Link>
         </div>
 
@@ -96,67 +88,36 @@ const Footer = () => {
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="LinkedIn">
-            <i className="fab fa-linkedin" />
+            aria-label="LinkedIn"
+          >
+            <Linkedin size={24} />
           </a>
           <a
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Instagram">
-            <i className="fab fa-instagram" />
+            aria-label="Instagram"
+          >
+            <Instagram size={24} />
           </a>
           <a
             href="https://youtube.com"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="YouTube">
-            <i className="fab fa-youtube" />
+            aria-label="YouTube"
+          >
+            <Youtube size={24} />
           </a>
           <a
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Twitter">
-            <i className="fab fa-twitter" />
+            aria-label="Twitter"
+          >
+            <Twitter size={24} />
           </a>
         </div>
       </div>
-
-      {/* <form onSubmit={handleSubmit} className="subscription-form">
-          <p>
-            Subscribe to our newsletter to stay informed about new features and
-            updates.
-          </p>
-          {error && <div className="error-message">{error}</div>}
-          {subscribed && (
-            <div className="success-message">Thank you for subscribing!</div>
-          )}
-          <div className="form-row">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              aria-label="Email address"
-              required
-            />
-            <button type="submit" disabled={loading}>
-              {loading ? "Subscribing..." : "Subscribe"}
-            </button>
-          </div>
-          <small>
-            By subscribing, you agree to our Privacy Policy and consent to
-            receive updates.
-          </small>
-        </form> */}
-
-      {/* <div className="legal-links">
-          <Link to="/privacy">Privacy Policy</Link>
-          <Link to="/terms">Terms of Service</Link>
-          <Link to="/cookies">Cookies Settings</Link>
-        </div>
-      </div> */}
 
       <div className="footer-copyright">
         © {new Date().getFullYear()} Learnode. All rights reserved.
