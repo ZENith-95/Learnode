@@ -241,7 +241,7 @@ button {
 
 .online-indicator {
   position: absolute;
-  bottom: 0;
+  bottom: 7px;
   right: 0;
   width: 10px;
   height: 10px;
@@ -301,6 +301,7 @@ button {
 }
 
 .add-resource-btn {
+  font-family: kanit;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -317,6 +318,7 @@ button {
 .add-resource-btn:hover {
   border-color: #0056b3;
   color: #0056b3;
+  background-color: #f3f3f3;
 }
 
 /* Footer Styles */

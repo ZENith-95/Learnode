@@ -371,7 +371,7 @@ const GroupPage = () => {
               ))}
             </div>
             <button className="add-resource-btn">
-              <i className="fas fa-plus"></i>
+              {/* <i className="fas fa-plus"><img src={plus} alt="" /></i> */}
               <span>Add Resource</span>
             </button>
           </div>

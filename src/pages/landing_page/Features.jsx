@@ -50,12 +50,14 @@ const ShowcaseCards = () => {
           <p>
             Maintain Your Passion and Commitment With Our Motivational Features
           </p>
-          <button>
-            Resources{" "}
-            <span>
-              <img style={{ width: "1.4rem"}} src={go_img} />
-            </span>
-          </button>
+          <Link to="/resources">
+            <button>
+              Resources{" "}
+              <span>
+                <img style={{ width: "1.4rem" }} src={go_img} />
+              </span>
+            </button>
+          </Link>
         </div>
       </section>
     </div>

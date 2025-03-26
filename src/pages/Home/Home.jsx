@@ -1,7 +1,8 @@
 import React from "react";
 import "./Home.css";
 import { useState } from "react";
-import FindPeersHeader from "../../components/Navbar/FindPeersNav";
+// import FindPeersHeader from "../../components/Navbar/FindPeersNav";
+import HomeNav from "../../components/Navbar/HomeNav";
 import Footer from "../../components/Footer/Footer";
 import HeroBg from "/hero_img.png";
 import Features from "../landing_page/Features";
@@ -11,7 +12,7 @@ const Home = () => {
 
   return (
     <>
-      <FindPeersHeader />
+      <HomeNav />
       <div className="landing-page">
         <section className="hero" id="hero">
           <div className="hero-content">
