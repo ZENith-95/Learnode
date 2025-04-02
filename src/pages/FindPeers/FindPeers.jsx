@@ -217,7 +217,7 @@ const FindPeers = () => {
                 placeholder="Search For Messages"
                 className="search-messages-input"
               />
-              <div className="search-icon">
+              <div className="search-icon" style={{ paddingTop: ".7rem" }}>
                 <FaSearch />
               </div>
             </div>

@@ -19,14 +19,12 @@
   width: fit-content;
 }
 
-
 /* Logo styling */
 /* Logo styles */
-.fp-logo .logo-container{
+.fp-logo .logo-container {
   align-items: center;
   justify-content: center;
 }
-
 
 .fp-logo .logo {
   width: 2.5rem;
@@ -64,7 +62,6 @@
   position: relative; /* To help position popups relative to this container */
 }
 
-
 /* Notification button */
 .fp-notification-button {
   background: none;
@@ -73,7 +70,7 @@
   color: #000;
 }
 
-.fp-notification-button:hover{
+.fp-notification-button:hover {
   border-radius: 7px;
 }
 
@@ -91,7 +88,7 @@
   object-fit: cover;
 }
 
-.profile-button:hover{
+.profile-button:hover {
   border-radius: 7px;
   background-color: transparent;
   border: none;
@@ -186,10 +183,9 @@
   margin-left: 60%;
 }
 
-.notifications-popup .view-all:hover{
+.notifications-popup .view-all:hover {
   background-color: #000;
   color: #fff;
-
 }
 
 /* ================= Profile Popup ================= */
@@ -221,7 +217,7 @@
   color: #fff;
 }
 
-.profile-popup-info{
+.profile-popup-info {
   background-color: rgb(58, 149, 202);
   width: 100%;
   display: flex;
@@ -253,43 +249,41 @@
   font-weight: 300;
 }
 
-.profile-actions{
+.profile-actions {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 3rem;
 }
 
-.profile-actions .edit-profile{
-  padding: .75rem 1.8rem;
+.profile-actions .edit-profile {
+  padding: 0.75rem 1.8rem;
   background-color: var(--blue);
   color: white;
   border: none;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   font-family: kanit;
 }
 
-.profile-actions .logout{
-  padding: .6rem 1.8rem;
+.profile-actions .logout {
+  padding: 0.6rem 1.8rem;
   background-color: var(--white);
   color: rgb(0, 0, 0);
   border: 2px solid black;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   font-family: kanit;
 }
 
-.profile-actions .edit-profile:hover{
+.profile-actions .edit-profile:hover {
   background-color: #03174e;
   cursor: pointer;
   border: 2px solid #03174e;
 }
 
-.profile-actions .logout:hover{
+.profile-actions .logout:hover {
   color: #fff;
   background-color: #03174e;
   border: 2px solid #03174e;
-
-  
 }
 
 /* ================= Animations ================= */
@@ -327,10 +321,8 @@
 /* Small screens (mobile) */
 @media (max-width: 750px) {
   .fp-header {
-    
     padding: 0.5rem 2rem;
   }
-
 
   .fp-logo .logo {
     width: 80px;

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaArrowLeft, FaBell, FaTimes } from "react-icons/fa";
+import { FaArrowLeft, FaBell, FaTimes, FaPen } from "react-icons/fa";
 import "./FindPeersNav.css";
 import searchicon from "/search.png";
 import profile_img from "/profile.png";
@@ -12,8 +12,16 @@ const FindPeersHeader = () => {
   const navigate = useNavigate();
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
   const notificationRef = useRef(null);
   const profileRef = useRef(null);
+  const [profileData, setProfileData] = useState({
+    firstName: "Labi",
+    lastName: "Tina",
+    email: "labitina05@gmail.com",
+    education: "University",
+    avatar: profile_img,
+  });
 
   // State for managing network requests
   const [networkRequests, setNetworkRequests] = useState([
@@ -84,6 +92,41 @@ const FindPeersHeader = () => {
     setNetworkRequests((prevRequests) =>
       prevRequests.filter((request) => request.id !== requestId)
     );
+  };
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(false);
+  };
+
+  const handleSaveProfile = () => {
+    // Here you would typically save the changes to your backend
+    setIsEditing(false);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setProfileData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfileData((prev) => ({
+          ...prev,
+          avatar: reader.result,
+        }));
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -196,22 +239,108 @@ const FindPeersHeader = () => {
             onClick={() => setShowProfileMenu(!showProfileMenu)}
             aria-label="Profile menu"
           >
-            <img src={profile_img} alt="Profile" />
+            <img src={profileData.avatar} alt="Profile" />
           </button>
           {showProfileMenu && (
             <div className="profile-popup">
               <div className="profile-popup-heading">Profile</div>
-              <div className="profile-popup-info">
-                <img src={profile_img} alt="User" className="profile-pic" />
-                <div className="profile-info">
-                  <h3>Labi Tina</h3>
-                  <p>labitina05@gmail.com</p>
+              {!isEditing ? (
+                <>
+                  <div className="profile-popup-info">
+                    <img
+                      src={profileData.avatar}
+                      alt="User"
+                      className="profile-pic"
+                    />
+                    <div className="profile-info">
+                      <h3>{`${profileData.firstName} ${profileData.lastName}`}</h3>
+                      <p>{profileData.email}</p>
+                    </div>
+                  </div>
+                  <div className="profile-actions">
+                    <button className="edit-profile" onClick={handleEditClick}>
+                      Edit profile
+                    </button>
+                    <button className="logout">Logout</button>
+                  </div>
+                </>
+              ) : (
+                <div className="profile-edit-form">
+                  <div className="profile-image-section">
+                    <div className="profile-image-container">
+                      <img
+                        src={profileData.avatar}
+                        alt="Profile"
+                        className="profile-pic"
+                      />
+                      <label className="image-upload-label">
+                        <FaPen className="pen-icon" />
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleImageChange}
+                          style={{ display: "none" }}
+                        />
+                      </label>
+                    </div>
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      name="firstName"
+                      value={profileData.firstName}
+                      onChange={handleInputChange}
+                      placeholder="First Name"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      name="lastName"
+                      value={profileData.lastName}
+                      onChange={handleInputChange}
+                      placeholder="Last Name"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="email"
+                      name="email"
+                      value={profileData.email}
+                      onChange={handleInputChange}
+                      placeholder="Email"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <select
+                      name="education"
+                      value={profileData.education}
+                      onChange={handleInputChange}
+                    >
+                      <option value="">Select Education Level</option>
+                      <option value="Junior High School">
+                        Junior High School
+                      </option>
+                      <option value="Senior High School">
+                        Senior High School
+                      </option>
+                      <option value="University">University</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                  <div className="profile-edit-actions">
+                    <button className="save-button" onClick={handleSaveProfile}>
+                      Save
+                    </button>
+                    <button
+                      className="cancel-button"
+                      onClick={handleCancelEdit}
+                    >
+                      Cancel
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <div className="profile-actions">
-                <button className="edit-profile">Edit profile</button>
-                <button className="logout">Logout</button>
-              </div>
+              )}
             </div>
           )}
         </div>
