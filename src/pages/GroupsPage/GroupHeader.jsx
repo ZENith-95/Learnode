@@ -12,7 +12,7 @@ const GroupHeader = () => {
   };
 
   const groupData = {
-    "english": {
+    english: {
       name: "English Language Group",
       members: 19,
     },

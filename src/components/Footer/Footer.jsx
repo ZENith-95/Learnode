@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./footer.css";
 import { Link } from "react-router-dom";
+import ScrollToTopButton from "../ScrollToTopButton";
+
 import logo from "/logo.png";
 import { Linkedin, Instagram, Youtube, Twitter } from "lucide-react"; // Import icons from lucide-react
 
@@ -34,6 +36,7 @@ const Footer = () => {
 
   return (
     <footer className="footer" id="footer">
+      <ScrollToTopButton />
       <div className="footer-desktop">
         <div className="footer-section logo-section">
           <Link to="/">

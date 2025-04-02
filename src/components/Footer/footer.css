@@ -16,7 +16,6 @@
 }
 
 .footer-section {
-  flex: 1;
   min-width: 120px;
   display: flex;
   flex-direction: column;

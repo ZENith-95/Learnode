@@ -5,25 +5,28 @@ import {
   FaUserCircle,
   FaPaperPlane,
   FaMicrophone,
+  FaPhone,
 } from "react-icons/fa";
+import { CirclePlus } from "lucide-react";
 import Footer from "../../components/Footer/Footer";
 import GroupHeader from "./GroupHeader";
+import ProfileCard from "../../components/Profile";
+import ChatPopup from "../../components/ChatPopup/ChatPopup";
 import atama from "/atama.png";
 import agbavor from "/agbavor.png";
 import agbavitor from "/agbavitor.png";
 import dzah from "/dzah.png";
-import dzidefo from "/dzidefo.png"
-import dzahevans from "/dzahevans.png"
-import agbleze from "/agbleze.png"
-import dzokotoromeo from '/dzokotoromeo.png'
-import dzokoto from "/dzokoto.png"
-import karl from "/karl.png"
-import esinu from "/esinu.png"
-import sitsofe from "/sitsofe.png"
-import resource from "/resource.png"
-import file_black from "/file-black.png"
-import file_red from "/file-red.png"
-
+import dzidefo from "/dzidefo.png";
+import dzahevans from "/dzahevans.png";
+import agbleze from "/agbleze.png";
+import dzokotoromeo from "/dzokotoromeo.png";
+import dzokoto from "/dzokoto.png";
+import karl from "/karl.png";
+import esinu from "/esinu.png";
+import sitsofe from "/sitsofe.png";
+import resource from "/resource.png";
+import file_black from "/file-black.png";
+import file_red from "/file-red.png";
 
 const GroupPage = () => {
   const { groupId } = useParams();
@@ -31,6 +34,10 @@ const GroupPage = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(true);
   const messagesEndRef = useRef(null);
+  const fileInputRef = useRef(null);
+  const [selectedMember, setSelectedMember] = useState(null);
+  const [showProfileModal, setShowProfileModal] = useState(false);
+  const [showChatModal, setShowChatModal] = useState(false);
 
   // Group data based on the groupId
   const groupData = {
@@ -190,7 +197,7 @@ const GroupPage = () => {
         },
         {
           id: 2,
-          sender: "Dzokoto Jordan",
+          sender: "Dzikunu Jordan",
           avatar: "/placeholder.svg?height=40&width=40",
           content:
             "I love the minimalist approach that's popular now. Simple, clean designs focusing on typography and negative space are effective. This trend will continue to evolve and influence design. Simple designs will remain essential as technology advances. Minimalism helps designers convey complex ideas clearly.",
@@ -202,15 +209,20 @@ const GroupPage = () => {
           avatar: "/placeholder.svg?height=40&width=40",
           content:
             "As we move forward, I anticipate a design landscape that balances simplicity with bold, creative expression.",
-          timestamp: "6:33 PM",
+          timestamp: "6:31 PM",
         },
         {
           id: 4,
-          sender: "Lawson Doe",
+          sender: "You",
           avatar: "/placeholder.svg?height=40&width=40",
+          replyTo: {
+            sender: "Dzokoto Romeo",
+            content:
+              "As we move forward, I anticipate a design landscape that balances simplicity with",
+          },
           content:
             "What about sustainable design? With the growing awareness of environmental issues, I think graphic designers have a responsibility to create work that's eco-friendly and responsible. We should be thinking about the impact of our designs on the environment.",
-          timestamp: "6:35 PM",
+          timestamp: "6:31 PM",
         },
       ],
     },
@@ -264,6 +276,41 @@ const GroupPage = () => {
     }
   };
 
+  const handleAddResource = () => {
+    // Trigger the hidden file input
+    fileInputRef.current.click();
+  };
+
+  const handleFileSelected = (e) => {
+    const files = e.target.files;
+    if (files && files.length > 0) {
+      // In a real app, you would upload the file to a backend
+      console.log("File selected:", files[0].name);
+      // Add your file upload logic here
+    }
+  };
+
+  const handleProfileClick = (member) => {
+    setSelectedMember(member);
+    setShowProfileModal(true);
+    setShowChatModal(false);
+  };
+
+  const handleCloseProfileModal = () => {
+    setSelectedMember(null);
+    setShowProfileModal(false);
+  };
+
+  const handleOpenChat = (member) => {
+    setSelectedMember(member);
+    setShowProfileModal(false);
+    setShowChatModal(true);
+  };
+
+  const handleCloseChat = () => {
+    setShowChatModal(false);
+  };
+
   if (loading) {
     return (
       <div className="loading-overlay">
@@ -282,23 +329,51 @@ const GroupPage = () => {
         <div className="chat-section">
           <div className="chat-header">
             <div className="divider">
-              <span>Today</span>
+              <span>
+                <i>
+                  <FaPhone />
+                </i>
+              </span>
             </div>
           </div>
           <div className="chat-messages">
-            {group.messages.map((msg) => (
-              <div key={msg.id} className="message-container">
-                <div className="message-sender">
-                  <div className="sender-info">
-                    <span className="sender-name">{msg.sender}</span>
+            {group.messages.map((msg) => {
+              // Check if message is from current user (You)
+              const isCurrentUser =
+                msg.sender === "You" || msg.sender === "Lawson Doe";
+              const hasPreviousMessage = msg.replyTo !== undefined;
+
+              return (
+                <div
+                  key={msg.id}
+                  className={`message-container ${
+                    isCurrentUser ? "current-user" : ""
+                  }`}
+                >
+                  <div className="message-box">
+                    {!isCurrentUser && (
+                      <div className="sender-name">{msg.sender}</div>
+                    )}
+
+                    {hasPreviousMessage && (
+                      <div className="quoted-message">
+                        <div className="quoted-sender">
+                          {msg.replyTo?.sender}
+                        </div>
+                        <div className="quoted-content">
+                          {msg.replyTo?.content}
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="message-content">
+                      <p>{msg.content}</p>
+                      <span className="message-time">{msg.timestamp}</span>
+                    </div>
                   </div>
                 </div>
-                <div className="message-content">
-                  <p>{msg.content}</p>
-                  <span className="message-time">{msg.timestamp}</span>
-                </div>
-              </div>
-            ))}
+              );
+            })}
             <div ref={messagesEndRef} />
           </div>
           <form
@@ -341,6 +416,20 @@ const GroupPage = () => {
                     <span className="online-indicator"></span>
                   </div>
                   <span className="member-name">{member.name}</span>
+                  <button
+                    className="member-view-profile-btn"
+                    onClick={() =>
+                      handleProfileClick({
+                        id: member.id,
+                        name: member.name,
+                        about: member.role || "Group Member",
+                        avatar: member.avatar,
+                        education: member.education || "University",
+                      })
+                    }
+                  >
+                    View Profile
+                  </button>
                 </div>
               ))}
             </div>
@@ -348,7 +437,9 @@ const GroupPage = () => {
 
           <div className="sidebar-section">
             <h2 className="sidebar-title">
-              <i className="fas fa-file-alt"><img src={resource} alt="" /></i>
+              <i className="fas fa-file-alt">
+                <img src={resource} alt="" />
+              </i>
               <span>Resources</span>
             </h2>
             <div className="resources-list">
@@ -356,9 +447,13 @@ const GroupPage = () => {
                 <div key={resource.id} className="resource-item">
                   <div className="resource-icon">
                     {resource.type === "PDF" ? (
-                      <i className="fas fa-file-pdf"><img src={file_red} alt="" /></i>
+                      <i className="fas fa-file-pdf">
+                        <img src={file_red} alt="" />
+                      </i>
                     ) : (
-                      <i className="fas fa-file-word"><img src={file_black} alt="" /></i>
+                      <i className="fas fa-file-word">
+                        <img src={file_black} alt="" />
+                      </i>
                     )}
                   </div>
                   <div className="resource-info">
@@ -370,82 +465,44 @@ const GroupPage = () => {
                 </div>
               ))}
             </div>
-            <button className="add-resource-btn">
-              {/* <i className="fas fa-plus"><img src={plus} alt="" /></i> */}
+            <button className="add-resource-btn" onClick={handleAddResource}>
+              <i className="Fa">
+                <CirclePlus />
+              </i>
               <span>Add Resource</span>
             </button>
+            <input
+              type="file"
+              ref={fileInputRef}
+              style={{ display: "none" }}
+              onChange={handleFileSelected}
+              accept=".pdf,.doc,.docx,.ppt,.pptx,.txt"
+            />
           </div>
         </div>
       </main>
       <Footer />
 
-      {/* Footer */}
-      {/* <footer className="group-footer">
-        <div className="footer-container">
-          <div className="footer-section">
-            <div className="footer-logo">
-              <img
-                src="/placeholder.svg?height=40&width=40"
-                alt="Study Circle Logo"
-                className="logo-img"
-              />
-            </div>
-            <div className="footer-links">
-              <h3>Quick Links</h3>
-              <ul>
-                <li>
-                  <a href="#">Features</a>
-                </li>
-                <li>
-                  <a href="#">Home</a>
-                </li>
-              </ul>
-            </div>
-          </div>
+      {/* Profile Card Modal */}
+      {showProfileModal && selectedMember && (
+        <ProfileCard
+          isOpen={showProfileModal}
+          onClose={handleCloseProfileModal}
+          profileData={selectedMember}
+          onMessageClick={() => handleOpenChat(selectedMember)}
+        />
+      )}
 
-          <div className="footer-section">
-            <h3>Stay Notified</h3>
-            <ul>
-              <li>
-                <a href="#">Get Updates</a>
-              </li>
-              <li>
-                <a href="#">Get Involved</a>
-              </li>
-              <li>
-                <a href="#">Join us</a>
-              </li>
-            </ul>
-          </div>
-
-          <div className="footer-section">
-            <h3>Connect With Us</h3>
-            <p>
-              <a href="mailto:jnrxcell04@gmail.com">jnrxcell04@gmail.com</a>
-            </p>
-            <p>
-              <a href="tel:0598734550">0598734550 / 0550677233</a>
-            </p>
-            <div className="social-icons">
-              <a href="#" className="social-icon">
-                <i className="fab fa-linkedin"></i>
-              </a>
-              <a href="#" className="social-icon">
-                <i className="fab fa-tiktok"></i>
-              </a>
-              <a href="#" className="social-icon">
-                <i className="fab fa-youtube"></i>
-              </a>
-              <a href="#" className="social-icon">
-                <i className="fab fa-instagram"></i>
-              </a>
-              <a href="#" className="social-icon">
-                <i className="fab fa-facebook"></i>
-              </a>
-            </div>
-          </div>
+      {/* Chat Popup Modal */}
+      {showChatModal && selectedMember && (
+        <div className="chat-popup-overlay">
+          <ChatPopup
+            isOpen={showChatModal}
+            onClose={handleCloseChat}
+            peer={selectedMember}
+          />
         </div>
-      </footer> */}
+      )}
     </div>
   );
 };

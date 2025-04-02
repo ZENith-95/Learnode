@@ -8,7 +8,7 @@ import {
   FaUserCircle,
   FaUsers,
 } from "react-icons/fa";
-import Footer from '../../components/Footer/Footer';
+import Footer from "../../components/Footer/Footer";
 
 import gd from "/graphic-design.png";
 import webdev from "/web-dev.png";
@@ -65,11 +65,7 @@ const GroupsPage = () => {
               <FaArrowLeft />
             </button>
             <div className="header-logo">
-              <img
-                src={logo}
-                alt="Study Circle Logo"
-                className="logo-img"
-              />
+              <img src={logo} alt="Study Circle Logo" className="logo-img" />
               <span className="logo-text">Study Circle</span>
             </div>
           </div>
@@ -99,7 +95,8 @@ const GroupsPage = () => {
                   onClick={() => handleGroupClick(group.id)}
                   role="button"
                   tabIndex={0}
-                  aria-label={`Join ${group.name} group`}>
+                  aria-label={`Join ${group.name} group`}
+                >
                   <div className="group-image-container">
                     <img
                       src={group.image || "/placeholder.svg"}

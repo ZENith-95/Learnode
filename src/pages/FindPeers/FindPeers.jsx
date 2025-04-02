@@ -4,7 +4,7 @@ import FindPeersHeader from "../../components/Navbar/FindPeersNav";
 import ProfileCard from "../../components/Profile";
 import ChatPopup from "../../components/ChatPopup/ChatPopup";
 import { useNavigate } from "react-router-dom";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight, FaSearch } from "react-icons/fa";
 import avatar1 from "../../assets/avatar1.png";
 import avatar2 from "../../assets/avatar2.png";
 import avatar3 from "../../assets/avatar3.png";
@@ -202,18 +202,196 @@ const FindPeers = () => {
                 </div>
                 <button
                   className="view-profile-btn"
-                  onClick={() => handleViewProfile(peer)}>
+                  onClick={() => handleViewProfile(peer)}
+                >
                   View Profile
                 </button>
               </li>
             ))}
           </ul>
-          <button
-            className="fp-view-all-btn"
-            onClick={handleViewAll}
-            disabled={viewAllLoading}>
-            {viewAllLoading ? "Loading..." : "View All"}
-          </button>
+          <div className="fp-peers-left">
+            <h2 className="chats-title">Chats</h2>
+            <div className="search-messages-container">
+              <input
+                type="text"
+                placeholder="Search For Messages"
+                className="search-messages-input"
+              />
+              <div className="search-icon">
+                <FaSearch />
+              </div>
+            </div>
+
+            <div className="chats-list">
+              <div
+                className="chat-item"
+                onClick={() =>
+                  handleOpenChat({
+                    id: 11,
+                    name: "Esinu Vivian",
+                    about: "UI/UX Designer",
+                    avatar: avatar4,
+                  })
+                }
+              >
+                <div className="chat-avatar-container">
+                  <img
+                    src={avatar4}
+                    alt="Esinu Vivian"
+                    className="chat-avatar"
+                  />
+                  <span className="online-indicator"></span>
+                </div>
+                <div className="chat-info">
+                  <h3 className="chat-name">Esinu Vivian</h3>
+                  <p className="chat-preview">Yes of course</p>
+                </div>
+                <div className="chat-meta">
+                  <span className="chat-time">1hr</span>
+                  <button
+                    className="chat-view-profile-btn"
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent chat from opening
+                      handleViewProfile({
+                        id: 11,
+                        name: "Esinu Vivian",
+                        about: "UI/UX Designer",
+                        avatar: avatar4,
+                      });
+                    }}
+                  >
+                    View Profile
+                  </button>
+                </div>
+              </div>
+
+              <div
+                className="chat-item"
+                onClick={() =>
+                  handleOpenChat({
+                    id: 12,
+                    name: "Dzokoto Romeo",
+                    about: "Software Developer",
+                    avatar: peer3,
+                  })
+                }
+              >
+                <div className="chat-avatar-container">
+                  <img
+                    src={peer3}
+                    alt="Dzokoto Romeo"
+                    className="chat-avatar"
+                  />
+                  <span className="online-indicator"></span>
+                </div>
+                <div className="chat-info">
+                  <h3 className="chat-name">Dzokoto Romeo</h3>
+                  <p className="chat-preview">Yes of course</p>
+                </div>
+                <div className="chat-meta">
+                  <span className="chat-time">1hr</span>
+                  <button
+                    className="chat-view-profile-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleViewProfile({
+                        id: 12,
+                        name: "Dzokoto Romeo",
+                        about: "Software Developer",
+                        avatar: peer3,
+                      });
+                    }}
+                  >
+                    View Profile
+                  </button>
+                </div>
+              </div>
+
+              <div
+                className="chat-item"
+                onClick={() =>
+                  handleOpenChat({
+                    id: 13,
+                    name: "Sitsofe Emmanuella",
+                    about: "Graphic Designer",
+                    avatar: avatar3,
+                  })
+                }
+              >
+                <div className="chat-avatar-container">
+                  <img
+                    src={avatar3}
+                    alt="Sitsofe Emmanuella"
+                    className="chat-avatar"
+                  />
+                  <span className="online-indicator"></span>
+                </div>
+                <div className="chat-info">
+                  <h3 className="chat-name">Sitsofe Emmanuella</h3>
+                  <p className="chat-preview">Yes of course</p>
+                </div>
+                <div className="chat-meta">
+                  <span className="chat-time">1hr</span>
+                  <button
+                    className="chat-view-profile-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleViewProfile({
+                        id: 13,
+                        name: "Sitsofe Emmanuella",
+                        about: "Graphic Designer",
+                        avatar: avatar3,
+                      });
+                    }}
+                  >
+                    View Profile
+                  </button>
+                </div>
+              </div>
+
+              <div
+                className="chat-item"
+                onClick={() =>
+                  handleOpenChat({
+                    id: 14,
+                    name: "Agbavitor Woelinam",
+                    about: "Product Manager",
+                    avatar: peer2,
+                  })
+                }
+              >
+                <div className="chat-avatar-container">
+                  <img
+                    src={peer2}
+                    alt="Agbavitor Woelinam"
+                    className="chat-avatar"
+                  />
+                  <span className="online-indicator"></span>
+                </div>
+                <div className="chat-info">
+                  <h3 className="chat-name">Agbavitor Woelinam</h3>
+                  <p className="chat-preview">Yes of course</p>
+                </div>
+                <div className="chat-meta">
+                  <span className="chat-time">1hr</span>
+                  <button
+                    className="chat-view-profile-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleViewProfile({
+                        id: 14,
+                        name: "Agbavitor Woelinam",
+                        about: "Product Manager",
+                        avatar: peer2,
+                      });
+                    }}
+                  >
+                    View Profile
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section className="fp-may-know-section">
@@ -223,7 +401,8 @@ const FindPeers = () => {
               <button
                 className="fp-prev-arrow"
                 onClick={() => scroll("left")}
-                aria-label="Scroll previous">
+                aria-label="Scroll previous"
+              >
                 <FaChevronLeft size={20} />
               </button>
             )}
@@ -246,7 +425,8 @@ const FindPeers = () => {
                   <button
                     className="fp-network-btn"
                     onClick={() => handleNetwork(suggestion.id)}
-                    disabled={pendingNetworks[suggestion.id]}>
+                    disabled={pendingNetworks[suggestion.id]}
+                  >
                     {pendingNetworks[suggestion.id] ? "Pending" : "Network"}
                   </button>
                 </div>
@@ -256,7 +436,8 @@ const FindPeers = () => {
               <button
                 className="fp-next-arrow"
                 onClick={() => scroll("right")}
-                aria-label="Scroll next">
+                aria-label="Scroll next"
+              >
                 <FaChevronRight size={20} />
               </button>
             )}

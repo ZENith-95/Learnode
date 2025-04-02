@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { FaArrowLeft, FaBell } from "react-icons/fa";
+import { FaArrowLeft, FaBell, FaTimes } from "react-icons/fa";
 import "./FindPeersNav.css";
 import searchicon from "/search.png";
 import profile_img from "/profile.png";
@@ -15,26 +15,30 @@ const FindPeersHeader = () => {
   const notificationRef = useRef(null);
   const profileRef = useRef(null);
 
-  const notifications = [
+  // State for managing network requests
+  const [networkRequests, setNetworkRequests] = useState([
     {
-      id: 4,
-      name: "Adjeibor Williams",
-      role: "Product Designer",
-      avatar: avatar4,
-    },
-    {
-      id: 5,
-      name: "Kumah Vincent",
-      role: "4 years exp",
+      id: 1,
+      name: "Brain Smith",
       avatar: avatar5,
+      status: "pending", // pending, accepted, declined
+      time: "1d",
     },
     {
-      id: 6,
-      name: "Dzadey Vivian",
-      role: "UI/UX Designer",
-      avatar: avatar6,
+      id: 2,
+      name: "Mensah Williams",
+      avatar: avatar4,
+      status: "pending",
+      time: "2h",
     },
-  ];
+    {
+      id: 3,
+      name: "Dzadey Vivian",
+      avatar: avatar6,
+      status: "pending",
+      time: "3h",
+    },
+  ]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -57,13 +61,39 @@ const FindPeersHeader = () => {
     navigate(-1);
   };
 
+  // Handle accept network request
+  const handleAcceptRequest = (requestId) => {
+    setNetworkRequests((prevRequests) =>
+      prevRequests.map((request) =>
+        request.id === requestId ? { ...request, status: "accepted" } : request
+      )
+    );
+  };
+
+  // Handle decline network request
+  const handleDeclineRequest = (requestId) => {
+    setNetworkRequests((prevRequests) =>
+      prevRequests.map((request) =>
+        request.id === requestId ? { ...request, status: "declined" } : request
+      )
+    );
+  };
+
+  // Handle removing a notification
+  const handleRemoveNotification = (requestId) => {
+    setNetworkRequests((prevRequests) =>
+      prevRequests.filter((request) => request.id !== requestId)
+    );
+  };
+
   return (
     <header className="fp-header">
       <div className="fp-nav-right">
         <button
           className="fp-back-button"
           onClick={handleBackClick}
-          aria-label="Go back">
+          aria-label="Go back"
+        >
           <FaArrowLeft size={14} />
         </button>
         <div className="fp-logo">
@@ -82,7 +112,8 @@ const FindPeersHeader = () => {
           <button
             className="fp-notification-button"
             onClick={() => setShowNotifications(!showNotifications)}
-            aria-label="Notifications">
+            aria-label="Notifications"
+          >
             <FaBell size={24} />
           </button>
           {showNotifications && (
@@ -91,20 +122,69 @@ const FindPeersHeader = () => {
                 <h3>Notifications</h3>
                 <p>Networkers</p>
               </div>
-              {notifications.map((notification) => (
-                <div key={notification.id} className="notification-item">
-                  <img src={notification.avatar} alt={notification.name} />
+
+              {networkRequests.map((request) => (
+                <div
+                  key={request.id}
+                  className={`notification-item ${
+                    request.status !== "pending" ? "notification-resolved" : ""
+                  }`}
+                >
+                  <img src={request.avatar} alt={request.name} />
                   <div className="notification-content">
-                    <p>
-                      <strong>{notification.name}</strong> wants to network
-                    </p>
-                    <div className="notification-actions">
-                      <button className="accept-btn">Accept</button>
-                      <button className="decline-btn">Decline</button>
-                    </div>
+                    {request.status === "pending" && (
+                      <>
+                        <p>
+                          <strong>{request.name}</strong> wants to network
+                        </p>
+                        <div className="notification-actions">
+                          <button
+                            className="accept-btn"
+                            onClick={() => handleAcceptRequest(request.id)}
+                          >
+                            Accept
+                          </button>
+                          <button
+                            className="decline-btn"
+                            onClick={() => handleDeclineRequest(request.id)}
+                          >
+                            Decline
+                          </button>
+                        </div>
+                      </>
+                    )}
+
+                    {request.status === "accepted" && (
+                      <div className="notification-status">
+                        <p>
+                          <strong>invitation accepted</strong>
+                        </p>
+                        <span
+                          className="close-icon"
+                          onClick={() => handleRemoveNotification(request.id)}
+                        >
+                          <FaTimes />
+                        </span>
+                      </div>
+                    )}
+
+                    {request.status === "declined" && (
+                      <div className="notification-status">
+                        <p>You ignored this invitation</p>
+                        <span
+                          className="close-icon"
+                          onClick={() => handleRemoveNotification(request.id)}
+                        >
+                          <FaTimes />
+                        </span>
+                      </div>
+                    )}
+
+                    <div className="notification-time">{request.time}</div>
                   </div>
                 </div>
               ))}
+
               <button className="view-all">View All</button>
             </div>
           )}
@@ -114,7 +194,8 @@ const FindPeersHeader = () => {
           <button
             className="profile-button"
             onClick={() => setShowProfileMenu(!showProfileMenu)}
-            aria-label="Profile menu">
+            aria-label="Profile menu"
+          >
             <img src={profile_img} alt="Profile" />
           </button>
           {showProfileMenu && (

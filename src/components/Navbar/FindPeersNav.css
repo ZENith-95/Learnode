@@ -22,7 +22,7 @@
 /* Back button */
 .fp-back-button {
   background: none;
-  border: .9px solid grey;
+  border: 0.9px solid grey;
   border-radius: 50%;
   padding: 0.1rem 0.2rem;
   cursor: pointer;
@@ -61,7 +61,6 @@
   position: relative; /* To help position popups relative to this container */
 }
 
-
 /* Notification button */
 .fp-notification-button {
   background: none;
@@ -70,7 +69,7 @@
   color: #000;
 }
 
-.fp-notification-button:hover{
+.fp-notification-button:hover {
   border-radius: 7px;
 }
 
@@ -88,7 +87,7 @@
   object-fit: cover;
 }
 
-.profile-button:hover{
+.profile-button:hover {
   border-radius: 7px;
   background-color: transparent;
   border: none;
@@ -103,90 +102,141 @@
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 1rem;
-  width: fit-content;
-  min-width: 220px;
-  max-width: 600px;
+  width: 400px;
+  min-width: 300px;
   z-index: 1000;
   animation: fadeIn 0.3s ease;
 }
 
+.notifications-popup-heading {
+  margin-bottom: 1rem;
+}
+
 .notifications-popup h3 {
-  text-decoration: underline;
-  font-size: 2rem;
-  border-bottom: 1px solid #eee;
+  font-size: 1.5rem;
+  margin: 0 0 0.25rem 0;
+  font-weight: 600;
+}
+
+.notifications-popup-heading p {
+  margin: 0;
+  font-size: 1rem;
+  color: #444;
 }
 
 .notification-item {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1rem 0;
+  padding: 1rem;
   border-bottom: 1px solid #eee;
+  position: relative;
 }
 
 .notification-item img {
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 4rem;
+  height: 4rem;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.notification-item p {
+.notification-content {
   flex: 1;
+  position: relative;
+}
+
+.notification-content p {
   font-size: 0.9rem;
-  margin: 0;
-  color: #444;
+  margin: 0 0 0.5rem 0;
+  color: #333;
 }
 
 .notification-actions {
   display: flex;
   gap: 0.7rem;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 .accept-btn {
   background: var(--blue);
   color: white;
   border: none;
-  padding: 0.5rem 2rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-family: kanit;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
 }
 
 .decline-btn {
-  background: var(--white);
+  background: white;
   color: black;
-  border: 2px solid black;
-  padding: 0.5rem 2rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-family: kanit;
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
 }
 
-.notification-item button:hover {
-  background-color: rgb(3, 26, 104);
-  cursor: pointer;
-  border: 2px solid #03174e;
+.accept-btn:hover {
+  background-color: #0056b3;
+}
 
-  color: #fff;
+.decline-btn:hover {
+  border-color: #bbb;
+  background-color: #f5f5f5;
+}
+
+/* Status for accepted and declined */
+.notification-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.notification-status p {
+  margin: 0;
+}
+
+.close-icon {
+  background-color: #000;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.close-icon:hover {
+  background-color: #333;
+}
+
+.notification-time {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 0.75rem;
+  color: #888;
 }
 
 .notifications-popup .view-all {
-  width: 30%;
-  padding: 0.8rem 1rem;
+  width: 100%;
+  padding: 0.6rem;
   margin-top: 1rem;
-  background-color: #fff;
-  border: 2px solid black;
-  border-radius: 7px;
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-radius: 4px;
   cursor: pointer;
-  margin-left: 60%;
+  font-size: 0.9rem;
+  transition: all 0.2s;
 }
 
-.notifications-popup .view-all:hover{
-  background-color: #000;
-  color: #fff;
-
+.notifications-popup .view-all:hover {
+  background-color: #f5f5f5;
+  border-color: #bbb;
 }
 
 /* ================= Profile Popup ================= */
@@ -218,7 +268,7 @@
   color: #fff;
 }
 
-.profile-popup-info{
+.profile-popup-info {
   background-color: rgb(58, 149, 202);
   width: 100%;
   display: flex;
@@ -250,43 +300,41 @@
   font-weight: 300;
 }
 
-.profile-actions{
+.profile-actions {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 3rem;
 }
 
-.profile-actions .edit-profile{
-  padding: .75rem 1.8rem;
+.profile-actions .edit-profile {
+  padding: 0.75rem 1.8rem;
   background-color: var(--blue);
   color: white;
   border: none;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   font-family: kanit;
 }
 
-.profile-actions .logout{
-  padding: .6rem 1.8rem;
+.profile-actions .logout {
+  padding: 0.6rem 1.8rem;
   background-color: var(--white);
   color: rgb(0, 0, 0);
   border: 2px solid black;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   font-family: kanit;
 }
 
-.profile-actions .edit-profile:hover{
+.profile-actions .edit-profile:hover {
   background-color: #03174e;
   cursor: pointer;
   border: 2px solid #03174e;
 }
 
-.profile-actions .logout:hover{
+.profile-actions .logout:hover {
   color: #fff;
   background-color: #03174e;
   border: 2px solid #03174e;
-
-  
 }
 
 /* ================= Animations ================= */
@@ -324,10 +372,8 @@
 /* Small screens (mobile) */
 @media (max-width: 750px) {
   .fp-header {
-    
     padding: 0.5rem 2rem;
   }
-
 
   .fp-logo .logo {
     width: 80px;

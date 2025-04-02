@@ -1,4 +1,3 @@
-
 /* Base variables */
 :root {
   --header-height: 4rem;
@@ -24,7 +23,6 @@
   background-color: #fff;
 }
 
-
 .fp-main {
   flex: 1;
   padding: 2rem;
@@ -36,6 +34,10 @@
 /* "Find Peers" section */
 .fp-peers-section {
   margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  align-items: center;
 }
 
 .fp-peers-section h2 {
@@ -218,7 +220,7 @@
   height: 13rem;
   object-fit: cover;
   margin-bottom: 0.5rem;
-  border-radius: .7rem;
+  border-radius: 0.7rem;
 }
 
 .fp-network-btn {
@@ -234,14 +236,11 @@
   width: 85%;
   font-family: kanit;
   height: fit-content;
-  
 }
 
 .fp-network-btn:hover {
   background-color: #010a3fe7;
   border: 2px solid #010a3fe7;
-  
-  
 }
 
 /* Optional arrow button for horizontal scroll */
@@ -383,11 +382,11 @@
     flex-direction: column;
   }
 
-  .view-profile-btn{
+  .view-profile-btn {
     margin-left: 50%;
   }
 
-  .fp-card-avatar{
+  .fp-card-avatar {
     width: 100%;
   }
 
@@ -426,8 +425,6 @@
     max-width: 300px;
   }
 
- 
-
   .notifications-popup,
   .profile-popup {
     max-height: 80vh;
@@ -450,4 +447,160 @@
 .fp-peer-item,
 .fp-card {
   animation: slideIn 0.3s ease-out;
+}
+
+/* Chats Section */
+.fp-peers-left {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  /* margin-top: 20px; */
+  width: 100%;
+}
+
+.chats-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #000;
+  text-align: left;
+}
+
+.search-messages-container {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.search-messages-input {
+  width: 100%;
+  padding: 12px 40px 12px 40px;
+  outline: 1px solid #0f0f0f;
+  border-radius: 50px !important;
+  font-size: 14px;
+  border: none;
+  display: flex;
+  align-items: center;
+}
+
+.search-messages-input::placeholder {
+  color: #000;
+  padding-left: 3rem;
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+.chats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 5px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  position: relative;
+  padding-right: 100px;
+}
+
+.chat-item:hover {
+  background-color: #f5f5f5;
+}
+
+.chat-avatar-container {
+  position: relative;
+  margin-right: 15px;
+}
+
+.chat-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.online-indicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 10px;
+  height: 10px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.chat-info {
+  flex: 1;
+}
+
+.chat-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  color: #333;
+}
+
+.chat-preview {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.chat-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+  min-width: 35px;
+}
+
+.chat-time {
+  font-size: 12px;
+  color: #888;
+}
+
+.chat-view-profile-btn {
+  display: none;
+  background-color: var(--blue);
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  position: absolute;
+  top: 50%;
+  right: -90px;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  z-index: 5;
+}
+
+.chat-view-profile-btn:hover {
+  background-color: #0056b3;
+}
+
+.chat-item:hover .chat-view-profile-btn {
+  display: block;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
