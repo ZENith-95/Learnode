@@ -145,8 +145,8 @@ button:hover {
 }
 
 .edu-img{
-  width: 5rem;
-  height: 4rem;
+  width: 5rem !important;
+  height: 4rem !important;
   object-fit: cover;
   margin-bottom: -4rem;
 }

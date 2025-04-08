@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
   background: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: sticky;
@@ -68,6 +68,18 @@
   border: none;
   cursor: pointer;
   color: #000;
+  position: relative;
+}
+
+.fp-notification-button::before{
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  border-radius: 50%;
+  content: "";
+  position: absolute;
+  top: -3px;
+  right: -1px;
 }
 
 .fp-notification-button:hover {
@@ -79,6 +91,9 @@
   cursor: pointer;
   background-color: #fff;
   border: none;
+  width: 3.4rem;
+  height: 3.4rem;
+  margin-top: .4rem;
 }
 
 .profile-button img {
@@ -249,11 +264,50 @@
   font-weight: 300;
 }
 
+
+.profile-details {
+  display: flex;
+  align-items: center !important;
+  justify-content: start;
+  margin-top: 2rem;
+  width: 75%;
+  gap: 1rem;
+  outline: 1px solid blue;
+  border-radius: 0.5rem;
+  padding: 1rem ;
+  background-color: #f5f5f5;
+}
+
+.edu-img{
+  width: 5rem !important;
+  height: 4rem !important;
+  object-fit: cover;
+  margin-bottom: -4rem;
+}
+
+.edu-img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detail-label {
+  color: #474747;
+  font-weight: 500;
+}
+
+.education-value{
+  color: #000 !important;
+  font-weight: 500;
+
+}
+
 .profile-actions {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 3rem;
+  padding-top: 2rem;
 }
 
 .profile-actions .edit-profile {

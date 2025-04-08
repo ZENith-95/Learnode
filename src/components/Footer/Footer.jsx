@@ -39,8 +39,9 @@ const Footer = () => {
       <ScrollToTopButton />
       <div className="footer-desktop">
         <div className="footer-section logo-section">
-          <Link to="/">
+          <Link className="footer-link" to="/home">
             <img src={logo} alt="Logo" className="footer-logo" />
+            <h5>Study Circle</h5>
           </Link>
         </div>
 

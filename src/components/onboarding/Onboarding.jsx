@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Onboarding.css";
 import { Link } from "react-router-dom";
 
-const Onboarding = ({ onClose }) => {
+const Onboarding = ({ isOpen, onClose }) => {
   const [step, setStep] = useState(1);
 
   const handleNext = () => {
@@ -16,6 +16,9 @@ const Onboarding = ({ onClose }) => {
   const handleSkip = () => {
     onClose(); // Close the onboarding modal
   };
+
+  // If modal is not open, don't render anything
+  if (!isOpen) return null;
 
   return (
     <div className="onboarding-modal">
@@ -94,12 +97,10 @@ const Onboarding = ({ onClose }) => {
                     />
                   </div>
                   <div className="onboarding-buttons">
-                    <button
-                      className="skip-button"
-                      onClick={() => (window.location.href = "/")}
-                    >
+                    <button className="skip-button" onClick={handleSkip}>
                       Skip
                     </button>
+
                     <button className="next-button" onClick={handleNext}>
                       Next
                     </button>
@@ -136,7 +137,7 @@ const Onboarding = ({ onClose }) => {
                       Back
                     </button>
                     <Link to="/home">
-                      <button className="start-button">Start</button>
+                      <button className="start-button" onClick={onClose}>Start</button>
                     </Link>
                   </div>
                 </div>

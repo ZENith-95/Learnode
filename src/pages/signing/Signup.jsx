@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Onboarding from "../../components/onboarding/Onboarding"; // Import the Onboarding component
 import "./Signing.css";
 
-const Signup = ({ isOpen, onClose }) => {
+const Signup = ({ isOpen, onClose, onSignupSuccess }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,7 +10,6 @@ const Signup = ({ isOpen, onClose }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [showOnboarding, setShowOnboarding] = useState(false); // State to control onboarding modal
 
   const navigate = useNavigate();
 
@@ -74,8 +72,10 @@ const Signup = ({ isOpen, onClose }) => {
         password,
       });
 
-      // Show the onboarding modal after successful signup
-      setShowOnboarding(true);
+      // Call the onSignupSuccess callback to notify the parent component
+      if (onSignupSuccess) {
+        onSignupSuccess();
+      }
     } catch (err) {
       setError("Failed to create account");
     } finally {
@@ -92,101 +92,92 @@ const Signup = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <>
-      <div
-        className={`modal-overlay ${isOpen ? "active" : ""}`}
-        onClick={handleOverlayClick}>
-        <div className="sign-in">
-          <span className="close-button" onClick={onClose}>
-            &times;
-          </span>
-          <h2>Sign Up</h2>
-          {error && <div className="error-message">{error}</div>}
-          <form onSubmit={handleSubmit}>
-            <div className="name">
-              <div className="firstname input">
-                <label>First Name</label>
-                <input
-                  type="text"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
-                  placeholder="First Name"
-                  required
-                />
-              </div>
-              <div className="lastname input">
-                <label>Last Name</label>
-                <input
-                  type="text"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                  placeholder="Last Name"
-                  required
-                />
-              </div>
-            </div>
-            <div className="email input">
-              <label>Email</label>
+    <div
+      className={`modal-overlay ${isOpen ? "active" : ""}`}
+      onClick={handleOverlayClick}
+    >
+      <div className="sign-in">
+        <span className="close-button" onClick={onClose}>
+          &times;
+        </span>
+        <h2>Sign Up</h2>
+        {error && <div className="error-message">{error}</div>}
+        <form onSubmit={handleSubmit}>
+          <div className="name">
+            <div className="firstname input">
+              <label>First Name</label>
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="First Name"
                 required
               />
             </div>
-            <div className="password input">
-              <label>Password</label>
+            <div className="lastname input">
+              <label>Last Name</label>
               <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                placeholder="Last Name"
                 required
               />
             </div>
-            <div className="password input">
-              <label>Confirm Password</label>
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                placeholder="Confirm Password"
-                required
-              />
-            </div>
-            <button 
-              type="submit" 
-              disabled={loading} 
-              className={loading ? "button-loading" : ""}
-            >
-              {loading ? "Creating Account..." : "Sign Up"}
-            </button>
-          </form>
-
-          <p className="terms">
-            By clicking 'Sign Up' you confirm that you've read, understood, and
-            accepted our Terms and Conditions, and that you agree to receive
-            updates from our P2P Team.
-          </p>
-
-          <div className="log-in-bottom">
-            <p>Already have an account? </p>
-            <button className="sign-in-link" onClick={onClose}>
-              Log In
-            </button>
           </div>
+          <div className="email input">
+            <label>Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div className="password input">
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div className="password input">
+            <label>Confirm Password</label>
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              placeholder="Confirm Password"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={loading}
+            className={loading ? "button-loading" : ""}
+          >
+            {loading ? "Creating Account..." : "Sign Up"}
+          </button>
+        </form>
+
+        <p className="terms">
+          By clicking 'Sign Up' you confirm that you've read, understood, and
+          accepted our Terms and Conditions, and that you agree to receive
+          updates from our P2P Team.
+        </p>
+
+        <div className="log-in-bottom">
+          <p>Already have an account? </p>
+          <button className="sign-in-link" onClick={onClose}>
+            Log In
+          </button>
         </div>
       </div>
-
-      {/* Onboarding Modal */}
-      {showOnboarding && (
-        <Onboarding
-          isOpen={showOnboarding} // Pass isOpen prop to Onboarding
-          onClose={() => setShowOnboarding(false)} // Close onboarding modal
-        />
-      )}
-    </>
+    </div>
   );
 };
 

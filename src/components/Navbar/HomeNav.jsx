@@ -8,6 +8,7 @@ import avatar4 from "../../assets/avatar4.png";
 import avatar5 from "../../assets/avatar5.png";
 import avatar6 from "../../assets/avatar6.png";
 import logo from "/logo.png";
+import graduation_cap from '/graduation-cap.svg';
 
 const HomeNav = () => {
   const navigate = useNavigate();
@@ -228,7 +229,7 @@ const HomeNav = () => {
                 </div>
               ))}
 
-              <button className="view-all">View All</button>
+              {/* <button className="view-all">View All</button> */}
             </div>
           )}
         </div>
@@ -255,6 +256,17 @@ const HomeNav = () => {
                     <div className="profile-info">
                       <h3>{`${profileData.firstName} ${profileData.lastName}`}</h3>
                       <p>{profileData.email}</p>
+                    </div>
+                  </div>
+                  <div className="profile-details">
+                    <div className="edu-img">
+                      <img src={graduation_cap || "/placeholder.svg"} alt="" />
+                    </div>
+                    <div className="edu-detail">
+                      <h5 className="education-label">Level of Education</h5>
+                      <p className="education-value">
+                        {profileData.education || "Not specified"}
+                      </p>
                     </div>
                   </div>
                   <div className="profile-actions">
