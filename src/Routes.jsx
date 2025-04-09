@@ -12,6 +12,7 @@ import Home from "./pages/Home/Home";
 import GroupsPage from "./pages/GroupsPage/GroupsPage";
 import GroupPage from "./pages/GroupsPage/GroupPage";
 import Resources from "./pages/Resources/Resources";
+import { isLoggedIn } from "./utils/auth";
 
 // ScrollToTop component to reset scroll position on route change
 const ScrollToTop = () => {
@@ -36,6 +37,18 @@ const ScrollToTop = () => {
   return null;
 };
 
+// Protected route component
+const ProtectedRoute = ({ children }) => {
+  const location = useLocation();
+
+  if (!isLoggedIn()) {
+    // Redirect to landing page if not logged in
+    return <Navigate to="/" state={{ from: location }} replace />;
+  }
+
+  return children;
+};
+
 const AppRoutes = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -48,11 +61,46 @@ const AppRoutes = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/find-peers" element={<FindPeers />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/resources" element={<Resources />} />
-        <Route path="/groups" element={<GroupsPage />} />
-        <Route path="/groups/:groupId" element={<GroupPage />} />
+        <Route
+          path="/find-peers"
+          element={
+            <ProtectedRoute>
+              <FindPeers />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/resources"
+          element={
+            <ProtectedRoute>
+              <Resources />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/groups"
+          element={
+            <ProtectedRoute>
+              <GroupsPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/groups/:groupId"
+          element={
+            <ProtectedRoute>
+              <GroupPage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   );

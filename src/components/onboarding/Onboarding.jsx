@@ -1,11 +1,26 @@
 import React, { useState } from "react";
 import "./Onboarding.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getUserData, setUserData } from "../../utils/auth";
 
 const Onboarding = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
+  const [education, setEducation] = useState("");
 
   const handleNext = () => {
+    // Update user data with education level
+    if (step === 1 && education) {
+      const userData = getUserData();
+      if (userData) {
+        const updatedUserData = {
+          ...userData,
+          education: education,
+        };
+        setUserData(updatedUserData);
+      }
+    }
+
     setStep((prevStep) => prevStep + 1);
   };
 
@@ -15,6 +30,15 @@ const Onboarding = ({ isOpen, onClose }) => {
 
   const handleSkip = () => {
     onClose(); // Close the onboarding modal
+  };
+
+  const handleEducationChange = (e) => {
+    setEducation(e.target.value);
+  };
+
+  const handleComplete = () => {
+    onClose();
+    navigate("/home");
   };
 
   // If modal is not open, don't render anything
@@ -71,19 +95,43 @@ const Onboarding = ({ isOpen, onClose }) => {
                   <h2>Are you in High School or University Student?</h2>
                   <div className="options">
                     <label>
-                      <input type="radio" name="education" value="junior" />
+                      <input
+                        type="radio"
+                        name="education"
+                        value="Junior High School"
+                        checked={education === "Junior High School"}
+                        onChange={handleEducationChange}
+                      />
                       Junior High School
                     </label>
                     <label>
-                      <input type="radio" name="education" value="senior" />
+                      <input
+                        type="radio"
+                        name="education"
+                        value="Senior High School"
+                        checked={education === "Senior High School"}
+                        onChange={handleEducationChange}
+                      />
                       Senior High School
                     </label>
                     <label>
-                      <input type="radio" name="education" value="university" />
+                      <input
+                        type="radio"
+                        name="education"
+                        value="University"
+                        checked={education === "University"}
+                        onChange={handleEducationChange}
+                      />
                       University
                     </label>
                     <label>
-                      <input type="radio" name="education" value="other" />
+                      <input
+                        type="radio"
+                        name="education"
+                        value="Other"
+                        checked={education === "Other"}
+                        onChange={handleEducationChange}
+                      />
                       Other
                     </label>
                   </div>
@@ -101,7 +149,11 @@ const Onboarding = ({ isOpen, onClose }) => {
                       Skip
                     </button>
 
-                    <button className="next-button" onClick={handleNext}>
+                    <button
+                      className="next-button"
+                      onClick={handleNext}
+                      disabled={!education}
+                    >
                       Next
                     </button>
                   </div>
@@ -136,9 +188,9 @@ const Onboarding = ({ isOpen, onClose }) => {
                     <button className="bac-button" onClick={handleBack}>
                       Back
                     </button>
-                    <Link to="/home">
-                      <button className="start-button" onClick={onClose}>Start</button>
-                    </Link>
+                    <button className="start-button" onClick={handleComplete}>
+                      Start
+                    </button>
                   </div>
                 </div>
               </div>

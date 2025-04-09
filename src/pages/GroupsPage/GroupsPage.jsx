@@ -11,6 +11,7 @@ import {
   FaPen,
 } from "react-icons/fa";
 import Footer from "../../components/Footer/Footer";
+import { clearUserData, getUserData } from "../../utils/auth";
 
 import gd from "/graphic-design.png";
 import webdev from "/web-dev.png";
@@ -32,12 +33,21 @@ const GroupsPage = () => {
   const notificationRef = useRef(null);
   const profileRef = useRef(null);
 
-  const [profileData, setProfileData] = useState({
-    firstName: "Labi",
-    lastName: "Tina",
-    email: "labitina05@gmail.com",
-    education: "University",
-    avatar: profile_img,
+  // Load user data from localStorage
+  const [profileData, setProfileData] = useState(() => {
+    const userData = getUserData();
+    if (!userData) {
+      // Redirect to login if no user data found
+      navigate("/");
+      return {
+        firstName: "",
+        lastName: "",
+        email: "",
+        education: "",
+        avatar: profile_img,
+      };
+    }
+    return userData;
   });
 
   // State for managing network requests
@@ -188,7 +198,10 @@ const GroupsPage = () => {
   };
 
   const confirmLogout = () => {
-    // Here you would typically clear any user session data
+    // Clear user data from localStorage
+    clearUserData();
+
+    // Navigate to landing page
     navigate("/");
   };
 

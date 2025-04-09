@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { setUserData } from "../../utils/auth";
 import "./Signing.css";
 
 const Signup = ({ isOpen, onClose, onSignupSuccess }) => {
@@ -72,7 +73,20 @@ const Signup = ({ isOpen, onClose, onSignupSuccess }) => {
         password,
       });
 
-      // Call the onSignupSuccess callback to notify the parent component
+      // Create user data object with properly capitalized names
+      const userData = {
+        id: Date.now(), // Using timestamp as a simple unique ID
+        firstName: firstName.trim(),
+        lastName: lastName.trim(),
+        email: email.trim(),
+        avatar: "/profile.png", // Default avatar
+        education: "", // Default empty education
+      };
+
+      // Store user data in localStorage
+      setUserData(userData);
+
+      // Call the onSignupSuccess callback to show onboarding
       if (onSignupSuccess) {
         onSignupSuccess();
       }

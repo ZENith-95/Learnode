@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { setUserData } from "../../utils/auth";
 import "./Signing.css";
 
 const Signing = ({ isOpen, onClose }) => {
@@ -7,6 +8,7 @@ const Signing = ({ isOpen, onClose }) => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isOpen) {
@@ -32,8 +34,51 @@ const Signing = ({ isOpen, onClose }) => {
     }
 
     try {
-      // Add your login logic here
+      // Simulate a successful login
       console.log("Login attempt with:", { email, password });
+
+      // Create mock user data (in a real app, this would come from your backend)
+      // For this exercise, let's create a mock user based on email
+      // Email format: firstname.lastname@example.com
+      let firstName = "User";
+      let lastName = "";
+
+      // Try to extract name from email
+      if (email.includes("@")) {
+        const emailName = email.split("@")[0]; // Get the part before @
+        if (emailName.includes(".")) {
+          // If email has format firstname.lastname@example.com
+          const nameParts = emailName.split(".");
+          if (nameParts.length >= 2) {
+            firstName =
+              nameParts[0].charAt(0).toUpperCase() + nameParts[0].slice(1);
+            lastName =
+              nameParts[1].charAt(0).toUpperCase() + nameParts[1].slice(1);
+          }
+        } else {
+          // If email has no dot in name part
+          firstName = emailName.charAt(0).toUpperCase() + emailName.slice(1);
+          lastName = "";
+        }
+      }
+
+      const userData = {
+        id: 1,
+        firstName: firstName,
+        lastName: lastName,
+        email: email.trim(),
+        avatar: "/profile.png",
+        education: "University",
+      };
+
+      // Store user data in localStorage
+      setUserData(userData);
+
+      // Close the login modal
+      onClose();
+
+      // Navigate to home page
+      navigate("/home");
     } catch (err) {
       setError("Failed to log in");
     } finally {
@@ -53,7 +98,8 @@ const Signing = ({ isOpen, onClose }) => {
   return (
     <div
       className={`modal-overlay ${isOpen ? "active" : ""}`}
-      onClick={handleOverlayClick}>
+      onClick={handleOverlayClick}
+    >
       <div className="sign-in">
         <span className="close-button" onClick={onClose}>
           &times;
@@ -84,22 +130,21 @@ const Signing = ({ isOpen, onClose }) => {
               className="forgot-password"
               onClick={(e) => {
                 e.preventDefault();
-                onClose(); 
-                 <button
-                   className="sign-in-button"
-                   onClick={() => setIsLoginOpen(true)}>
-                   Log In
-                 </button>;
+                onClose();
+                <button
+                  className="sign-in-button"
+                  onClick={() => setIsLoginOpen(true)}
+                >
+                  Log In
+                </button>;
               }}
             >
               forgot password?
             </span>
           </div>
-          <Link to= "/home" className="link-button">
-            <button type="submit" disabled={loading}>
-              {loading ? "Logging in..." : "Log In"}
-            </button>
-          </Link>
+          <button type="submit" disabled={loading}>
+            {loading ? "Logging in..." : "Log In"}
+          </button>
         </form>
         <hr />
         <div className="log-in-bottom">

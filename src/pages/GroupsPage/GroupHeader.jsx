@@ -8,6 +8,7 @@ import {
   FaPen,
 } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
+import { clearUserData, getUserData } from "../../utils/auth";
 import "./GroupHeader.css";
 import profile_img from "/profile.png";
 import avatar4 from "../../assets/avatar4.png";
@@ -25,12 +26,21 @@ const GroupHeader = () => {
   const notificationRef = useRef(null);
   const profileRef = useRef(null);
 
-  const [profileData, setProfileData] = useState({
-    firstName: "Labi",
-    lastName: "Tina",
-    email: "labitina05@gmail.com",
-    education: "University",
-    avatar: profile_img,
+  // Load user data from localStorage
+  const [profileData, setProfileData] = useState(() => {
+    const userData = getUserData();
+    if (!userData) {
+      // Redirect to login if no user data found
+      navigate("/");
+      return {
+        firstName: "",
+        lastName: "",
+        email: "",
+        education: "",
+        avatar: profile_img,
+      };
+    }
+    return userData;
   });
 
   // State for managing network requests
@@ -144,7 +154,10 @@ const GroupHeader = () => {
   };
 
   const confirmLogout = () => {
-    // Here you would typically clear any user session data
+    // Clear user data from localStorage
+    clearUserData();
+
+    // Navigate to landing page
     navigate("/");
   };
 

@@ -8,22 +8,33 @@ import avatar4 from "../../assets/avatar4.png";
 import avatar5 from "../../assets/avatar5.png";
 import avatar6 from "../../assets/avatar6.png";
 import logo from "/logo.png";
-import graduation_cap from '/graduation-cap.svg';
+import graduation_cap from "/graduation-cap.svg";
+import { clearUserData, getUserData, setUserData } from "../../utils/auth";
 
 const HomeNav = () => {
   const navigate = useNavigate();
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
   const notificationRef = useRef(null);
   const profileRef = useRef(null);
 
-  const [profileData, setProfileData] = useState({
-    firstName: "Labi",
-    lastName: "Tina",
-    email: "labitina05@gmail.com",
-    education: "University",
-    avatar: profile_img,
+  // Load user data from localStorage
+  const [profileData, setProfileData] = useState(() => {
+    const userData = getUserData();
+    if (!userData) {
+      // Redirect to login if no user data found
+      navigate("/");
+      return {
+        firstName: "",
+        lastName: "",
+        email: "",
+        education: "",
+        avatar: profile_img,
+      };
+    }
+    return userData;
   });
 
   // State for managing network requests
@@ -103,6 +114,7 @@ const HomeNav = () => {
 
   const handleSaveProfile = () => {
     // Here you would typically save the changes to your backend
+    setUserData(profileData);
     setIsEditing(false);
   };
 
@@ -130,6 +142,22 @@ const HomeNav = () => {
 
   const handleBackClick = () => {
     navigate(-1);
+  };
+
+  const handleLogout = () => {
+    setShowLogoutModal(true);
+  };
+
+  const confirmLogout = () => {
+    // Clear user data from localStorage
+    clearUserData();
+
+    // Navigate to landing page
+    navigate("/");
+  };
+
+  const cancelLogout = () => {
+    setShowLogoutModal(false);
   };
 
   return (
@@ -273,7 +301,9 @@ const HomeNav = () => {
                     <button className="edit-profile" onClick={handleEditClick}>
                       Edit profile
                     </button>
-                    <button className="logout">Logout</button>
+                    <button className="logout" onClick={handleLogout}>
+                      Logout
+                    </button>
                   </div>
                 </>
               ) : (
@@ -357,6 +387,23 @@ const HomeNav = () => {
           )}
         </div>
       </div>
+
+      {showLogoutModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h3>Confirm Logout</h3>
+            <p>Are you sure you want to logout?</p>
+            <div className="modal-actions">
+              <button className="cancel-button" onClick={cancelLogout}>
+                Cancel
+              </button>
+              <button className="confirm-button" onClick={confirmLogout}>
+                Logout
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
