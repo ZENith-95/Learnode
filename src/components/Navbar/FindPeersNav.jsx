@@ -2,12 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaBell, FaTimes, FaPen } from "react-icons/fa";
 import "./FindPeersNav.css";
-import searchicon from "/search.png";
 import profile_img from "/profile.png";
 import avatar4 from "../../assets/avatar4.png";
 import avatar5 from "../../assets/avatar5.png";
 import avatar6 from "../../assets/avatar6.png";
+import logo from "/logo.png"
 import graduation_cap from "/graduation-cap.svg";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 import { clearUserData, getUserData, setUserData } from "../../utils/auth";
 
 const FindPeersHeader = () => {
@@ -170,14 +171,19 @@ const FindPeersHeader = () => {
           <FaArrowLeft size={14} />
         </button>
         <div className="fp-logo">
-          <Link to="/">
-            <img src="/logo.png" alt="App Logo" className="logo" />
+          <Link to="/home" className="logo-container">
+            <div className="logo">
+              <img src={logo} alt="" />
+            </div>
+            <div className="logo-text">
+              <h4>Study Circle</h4>
+            </div>
           </Link>
         </div>
-        {/* <div className="fp-search-bar">
-          <img src={searchicon} alt="Search" />
-          <input type="text" placeholder="Search peers..." />
-        </div> */}
+        <div className="fp-search-bar">
+          <i><FaMagnifyingGlass /></i>
+          <input className="search" type="text" placeholder="Search peers..." />
+        </div>
       </div>
 
       <div className="fp-icons">

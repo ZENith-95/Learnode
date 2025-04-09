@@ -20,12 +20,6 @@ ul {
   list-style: none;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  outline: none;
-}
-
 /* Groups Page Container */
 .groups-page {
   display: flex;
@@ -40,7 +34,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 3rem;
+  padding: 0 2rem;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: fixed;
@@ -116,21 +110,42 @@ button {
 .icon-button {
   background: none;
   color: #555;
-  font-size: 18px;
+  font-size: 1.7rem !important;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
-  border-radius: 50%;
+  padding: 2px;
+  border-radius: 1rem !important;
   transition: background-color 0.2s;
 }
 
 .icon-button:hover {
-  background-color: #f0f0f0;
+  background-color: #000000 !important;
+  color: white !important;
 }
 
-.user-icon {
-  font-size: 22px;
+
+/* Profile button */
+.profile-button {
+  cursor: pointer;
+  background-color: #fff !important;
+  border: none !important;
+  width: 3.4rem;
+  height: 3.4rem;
+  margin-top: 0.4rem;
+}
+
+.profile-button img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-button:hover {
+  border-radius: 7px;
+  background-color: transparent !important;
+  border: none !important;
 }
 
 /* Main Content Styles */

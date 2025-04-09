@@ -94,12 +94,8 @@ input::placeholder {
 }
 
 .nav-middle img{
-    position: absolute;
-    align-self: flex-end;
-    top: 2.7rem;
-    left: 37%;
-    color: var(--black);
-    width: 0.9em;
+    width: 1rem ;
+    height: 1rem;
 }
 
 

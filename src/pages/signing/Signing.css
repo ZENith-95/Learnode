@@ -168,6 +168,7 @@ input[type="text"]:focus {
 .sign-in button:hover {
   background: rgb(27, 71, 192);
   color: #fff;
+  border: none;
 }
 
 .link-button {

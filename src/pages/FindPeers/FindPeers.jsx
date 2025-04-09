@@ -240,14 +240,13 @@ const FindPeers = () => {
                     alt="Esinu Vivian"
                     className="chat-avatar"
                   />
-                  <span className="online-indicator"></span>
                 </div>
                 <div className="chat-info">
                   <h3 className="chat-name">Esinu Vivian</h3>
                   <p className="chat-preview">Yes of course</p>
+                  <span className="chat-time">1hr</span>
                 </div>
                 <div className="chat-meta">
-                  <span className="chat-time">1hr</span>
                   <button
                     className="chat-view-profile-btn"
                     onClick={(e) => {
@@ -282,14 +281,13 @@ const FindPeers = () => {
                     alt="Dzokoto Romeo"
                     className="chat-avatar"
                   />
-                  <span className="online-indicator"></span>
                 </div>
                 <div className="chat-info">
                   <h3 className="chat-name">Dzokoto Romeo</h3>
                   <p className="chat-preview">Yes of course</p>
+                  <span className="chat-time">1hr</span>
                 </div>
                 <div className="chat-meta">
-                  <span className="chat-time">1hr</span>
                   <button
                     className="chat-view-profile-btn"
                     onClick={(e) => {
@@ -324,14 +322,15 @@ const FindPeers = () => {
                     alt="Sitsofe Emmanuella"
                     className="chat-avatar"
                   />
-                  <span className="online-indicator"></span>
+                  {/* <span className="online-indicator"></span> */}
                 </div>
                 <div className="chat-info">
                   <h3 className="chat-name">Sitsofe Emmanuella</h3>
                   <p className="chat-preview">Yes of course</p>
+                  <span className="chat-time">1hr</span>
                 </div>
                 <div className="chat-meta">
-                  <span className="chat-time">1hr</span>
+                  {/* <span className="chat-time">1hr</span> */}
                   <button
                     className="chat-view-profile-btn"
                     onClick={(e) => {
@@ -366,14 +365,15 @@ const FindPeers = () => {
                     alt="Agbavitor Woelinam"
                     className="chat-avatar"
                   />
-                  <span className="online-indicator"></span>
+                  {/* <span className="online-indicator"></span> */}
                 </div>
                 <div className="chat-info">
                   <h3 className="chat-name">Agbavitor Woelinam</h3>
                   <p className="chat-preview">Yes of course</p>
+                  <span className="chat-time">1hr</span>
                 </div>
                 <div className="chat-meta">
-                  <span className="chat-time">1hr</span>
+                  {/* <span className="chat-time">1hr</span> */}
                   <button
                     className="chat-view-profile-btn"
                     onClick={(e) => {

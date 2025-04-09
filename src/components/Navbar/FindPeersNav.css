@@ -15,8 +15,9 @@
 .fp-nav-right {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  width: fit-content;
+  justify-content: flex-start !important;
+  min-width: 50%;
+  gap: 1rem;
 }
 
 /* Back button */
@@ -30,28 +31,50 @@
 }
 
 /* Logo styling */
-.fp-logo .logo {
-  width: 150px;
-  object-fit: contain;
+.fp-logo .logo-container {
+  align-items: center;
+  justify-content: center;
 }
 
+.fp-logo .logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  max-width: 2rem;
+}
+
+.fp-logo .logo img {
+  width: 2.5rem;
+  height: 2.5rem;
+}
 /* ================= Center: Search Bar ================= */
 .fp-search-bar {
-  justify-self: right;
+  justify-self: right !important;
+  width: 15rem;
+  margin-left: 7rem;
+  display: flex;
+  align-items: center;
+  border: 2px solid #222;
+  min-width: 10rem !important;
+  border-radius: 1.5rem;
+  padding: 0 1rem;
 }
 
-.fp-search-bar input {
-  display: none;
-  border: none;
-  background: transparent;
-  width: 100%;
-  outline: none;
+
+.fp-search-bar .search{
+  display: inline-flex;
+  background-color: transparent;
+  margin: 0;
 }
 
-.fp-search-bar img {
+.fp-search-bar i {
+  margin-bottom: -.7rem;
   width: 2rem;
   height: 2rem;
 }
+
+
+/* ================= Center: Search Bar ================= */
+
 
 /* ================= Right: Icons & Popups ================= */
 .fp-icons {

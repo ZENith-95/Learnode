@@ -19,7 +19,7 @@ button {
   flex-direction: column;
   height: fit-content;
   min-height: 100vh;
-  padding-top: 5rem;
+  padding-top: 7rem;
 }
 
 /* Main Content Styles */
@@ -291,8 +291,8 @@ button {
 
 .online-indicator {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 5px;
+  right: 5px;
   width: 10px;
   height: 10px;
   background-color: #4caf50;
@@ -306,23 +306,27 @@ button {
 }
 
 .member-view-profile-btn {
-  display: none;
-  background-color: #3533cd;
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 4px;
-  font-size: 12px;
+   display: none;
+  position: relative;
+  padding: 0.2rem .5rem !important;
+  border-radius: 0.2rem;
   cursor: pointer;
-  transition: background-color 0.2s;
-  position: absolute;
-  right: 10px;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.264);
+  border: none;
+  background-color: #fff;
+  display: none;
+  margin-right: 1rem;
+  font-family: kanit;
   white-space: nowrap;
+  bottom: 30% !important;
   z-index: 5;
+  margin-bottom: 1rem !important;
 }
 
 .member-view-profile-btn:hover {
-  background-color: #0056b3;
+  background-color: #002349;
+  color: white;
+  border: none;
 }
 
 .active-member:hover .member-view-profile-btn {

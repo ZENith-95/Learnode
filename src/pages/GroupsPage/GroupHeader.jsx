@@ -202,7 +202,7 @@ const GroupHeader = () => {
       <div className="header-right">
         <div className="notification-wrapper" ref={notificationRef}>
           <button
-            className="icon-button"
+            className="fp-notification-button"
             onClick={() => setShowNotifications(!showNotifications)}
             aria-label="Notifications"
           >
@@ -288,11 +288,11 @@ const GroupHeader = () => {
 
         <div className="profile-wrapper" ref={profileRef}>
           <button
-            className="icon-button user-icon"
+            className="profile-button user-icon"
             onClick={() => setShowProfileMenu(!showProfileMenu)}
             aria-label="Profile menu"
           >
-            <FaUserCircle />
+            <img src={profileData.avatar} alt="" />
           </button>
           {showProfileMenu && (
             <div className="profile-popup">

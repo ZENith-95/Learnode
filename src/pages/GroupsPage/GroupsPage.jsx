@@ -13,6 +13,7 @@ import {
 import Footer from "../../components/Footer/Footer";
 import { clearUserData, getUserData } from "../../utils/auth";
 
+
 import gd from "/graphic-design.png";
 import webdev from "/web-dev.png";
 import english from "/english.png";
@@ -318,11 +319,11 @@ const GroupsPage = () => {
 
             <div className="profile-wrapper" ref={profileRef}>
               <button
-                className="icon-button user-icon"
+                className="profile-button"
                 onClick={() => setShowProfileMenu(!showProfileMenu)}
                 aria-label="Profile menu"
               >
-                <FaUserCircle />
+                <img src={profileData.avatar} alt="" />
               </button>
               {showProfileMenu && (
                 <div className="profile-popup">

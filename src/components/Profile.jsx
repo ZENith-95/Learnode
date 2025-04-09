@@ -43,7 +43,8 @@ const ProfileCard = ({ isOpen, onClose, profileData, onMessageClick }) => {
     <div className="profile-overlay" onClick={onClose}>
       <div
         className={`profile-card ${isOpen ? "open" : ""}`}
-        onClick={(e) => e.stopPropagation()}>
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="profile-heading">
           <div className="heading">
             <h4>Profile</h4>
@@ -63,30 +64,34 @@ const ProfileCard = ({ isOpen, onClose, profileData, onMessageClick }) => {
           <p className="profile-title">{profileData.about}</p>
         </div>
 
-        <div className="profile-actions">
-          <button
-            className={`network-btn ${networkStatus ? "networked" : ""}`}
-            onClick={handleNetwork}
-            disabled={loading || networkStatus}>
-            {loading ? "Pending..." : networkStatus ? "Added" : "Network"}
-          </button>
-          <button
-            className="message-btn"
-            onClick={handleChatOpen}
-            disabled={loading}>
-            Message {"\u2709"}
-          </button>
-        </div>
-
-        <div className="profile-details">
-          <div className="edu-img">
-            <img src={graduation_cap || "/placeholder.svg"} alt="" />
+        <div className="profile-content">
+          <div className="profile-actions">
+            <button
+              className={`network-btn ${networkStatus ? "networked" : ""}`}
+              onClick={handleNetwork}
+              disabled={loading || networkStatus}
+            >
+              {loading ? "Pending..." : networkStatus ? "Added" : "Network"}
+            </button>
+            <button
+              className="message-btn"
+              onClick={handleChatOpen}
+              disabled={loading}
+            >
+              Message {"\u2709"}
+            </button>
           </div>
-          <div className="edu-detail">
-            <h5 className="education-label">Level of Education</h5>
-            <p className="education-value">
-              {profileData.education || "Not specified"}
-            </p>
+
+          <div className="profile-details">
+            <div className="edu-img">
+              <img src={graduation_cap || "/placeholder.svg"} alt="" />
+            </div>
+            <div className="edu-detail">
+              <h5 className="education-label">Level of Education</h5>
+              <p className="education-value">
+                {profileData.education || "Not specified"}
+              </p>
+            </div>
           </div>
         </div>
       </div>

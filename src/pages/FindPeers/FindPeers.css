@@ -79,6 +79,7 @@
   display: none;
   margin-right: 3rem;
   font-family: kanit;
+  white-space: nowrap;
 }
 
 .view-profile-btn:hover {
@@ -543,6 +544,7 @@
 
 .chat-info {
   flex: 1;
+  /* background-color: #0056b3; */
 }
 
 .chat-name {
@@ -563,7 +565,11 @@
   flex-direction: column;
   align-items: flex-end;
   position: relative;
-  min-width: 35px;
+  width: 15px;
+  height: 15px;
+  outline: 2px solid #ccdcff;
+  background-color: #0eda15;
+  border-radius: 50%;
 }
 
 .chat-time {
@@ -573,24 +579,26 @@
 
 .chat-view-profile-btn {
   display: none;
-  background-color: var(--blue);
-  color: white;
-  border: none;
-  padding: 6px 10px;
-  border-radius: 4px;
-  font-size: 12px;
+  position: relative;
+  padding: 0.2rem .5rem !important;
+  border-radius: 0.2rem;
   cursor: pointer;
-  transition: background-color 0.2s;
-  position: absolute;
-  top: 50%;
-  right: -90px;
-  transform: translateY(-50%);
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.264);
+  border: none;
+  background-color: #fff;
+  display: none;
+  margin-right: 4rem;
+  font-family: kanit;
   white-space: nowrap;
+  bottom: 30% !important;
   z-index: 5;
+  margin-bottom: 1rem !important;
+
 }
 
 .chat-view-profile-btn:hover {
-  background-color: #0056b3;
+  background-color: #010a3fe7;
+  color: #fff;
 }
 
 .chat-item:hover .chat-view-profile-btn {
