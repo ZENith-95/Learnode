@@ -36,6 +36,7 @@ a {
   top: 0;
   left: 0;
   width: 100%;
+  max-width: 100vw;
   height: var(--navbar-height);
   z-index: 1000;
   transition: all var(--transition-speed) ease;
@@ -52,11 +53,10 @@ a {
 }
 
 /* Logo styles */
-.logo-container{
+.logo-container {
   align-items: center;
   justify-content: center;
 }
-
 
 .logo {
   width: 2.5rem;
@@ -114,17 +114,14 @@ ul {
 .sign-in-button:hover {
   background-color: black;
   color: white;
-
-
 }
-
 
 .sign-in-button {
   font-family: kanit;
   color: var(--black);
   background: transparent;
   border: 2px solid var(--black);
-  padding: .5rem 2rem;
+  padding: 0.5rem 2rem;
   border-radius: 0.5rem;
   font-size: 1.2rem;
   font-weight: 500;
@@ -140,14 +137,23 @@ ul {
   cursor: pointer;
 }
 
-/* Responsive Breakpoints */
-@media (max-width: 1024px) {
+/* Responsive styles */
+@media (max-width: 992px) {
   .navbar {
     padding: 0.7rem 2rem;
   }
 
+  .logo {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
   .nav-links {
     gap: 1.5rem;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
   }
 }
 
@@ -204,12 +210,12 @@ ul {
 
 @media (max-width: 480px) {
   .navbar {
-    padding: 0.7rem 1rem;
+    padding: 0.5rem 1rem;
   }
 
   .logo {
-    width: 2rem;
-    height: 2rem;
+    width: 1.8rem;
+    height: 1.8rem;
   }
 
   .nav-links {
@@ -218,6 +224,10 @@ ul {
 
   .nav-links li {
     padding: 0.4rem 0.8rem;
+  }
+
+  .mobile-menu-btn {
+    font-size: 1.2rem;
   }
 }
 

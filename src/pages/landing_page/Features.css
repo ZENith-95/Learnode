@@ -8,6 +8,7 @@ h2{
 .showcase-cards {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 3rem;
   margin: 4rem auto;
   max-width: 1200px;
@@ -84,8 +85,10 @@ h2{
   .showcase-cards {
     flex-direction: column;
     align-items: center;
+    justify-content: center;
   }
   .showcase-card {
+    margin: 0 auto;
     width: 80%;
     margin-bottom: 2rem;
   }

@@ -9,6 +9,8 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  width: 100%;
+  max-width: 100vw;
 }
 
 /* Container for the left part (back button + logo) */
@@ -119,9 +121,10 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 1rem;
   width: fit-content;
-  min-width: 220px;
+  min-width: max-content;
   max-width: 600px;
   z-index: 1000;
+  right: .2rem;
   animation: fadeIn 0.3s ease;
 }
 
@@ -220,6 +223,7 @@
   z-index: 1000;
   animation: fadeIn 0.3s ease;
   padding-bottom: 2rem;
+  right: .5rem;
 }
 
 .profile-popup-heading {
@@ -315,6 +319,7 @@
   border: none;
   border-radius: 0.5rem;
   font-family: kanit;
+  text-wrap: nowrap;
 }
 
 .profile-actions .logout {

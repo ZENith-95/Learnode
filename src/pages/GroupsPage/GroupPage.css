@@ -577,6 +577,18 @@ button {
   .sidebar-section {
     padding: 15px;
   }
+
+
+  .message-container:not(.current-user) .message-box {
+  display: flex;
+  flex-direction: column;
+  max-width: 90%;
+  align-items: flex-start;
+  background-color: #777777;
+  padding: 7px 15px;
+  border-radius: 15px 18px 18px 2px;
+}
+
 }
 
 /* Chat Popup Overlay */

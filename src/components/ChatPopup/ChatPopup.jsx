@@ -16,7 +16,7 @@ const ChatPopup = ({ isOpen, onClose, peer }) => {
     name: "Belinda Adzah",
     about: "Community, Performance And Network",
     avatar: "/peer2.png",
-    status: "Active",
+    status: "Active 7hr ago",
   };
 
   const [message, setMessage] = useState("");
@@ -105,7 +105,8 @@ const ChatPopup = ({ isOpen, onClose, peer }) => {
                 key={msg.id}
                 className={`message-container ${
                   msg.sender === "user" ? "user-message" : "peer-message"
-                }`}>
+                }`}
+              >
                 <div className="message-bubble">
                   <p className="message-text">{msg.text}</p>
                   <div className="message-time">{msg.timestamp}</div>

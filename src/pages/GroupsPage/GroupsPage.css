@@ -1,6 +1,4 @@
-.app {
-  min-width: 100vh;
-}
+
 
 #root {
   width: 100%;
@@ -359,8 +357,12 @@ ul {
     font-size: 28px;
   }
 
+  .create-group-btn {
+    display: flex;
+  }
+
   .create-group-btn span {
-    display: none;
+    display: flex;
   }
 
   .create-group-btn {
@@ -373,12 +375,26 @@ ul {
 }
 
 @media (max-width: 576px) {
+
+  .group-title{
+    font-size: 1rem !important;
+    text-align: left;
+  }
+
+  .member-count{
+    font-size: .7rem!important;
+  }
+
   .groups-grid {
     grid-template-columns: 1fr;
   }
 
   .header-logo .logo-text {
     display: none;
+  }
+
+  .header-right {
+    gap: 7px !important;
   }
 
   .groups-title {
