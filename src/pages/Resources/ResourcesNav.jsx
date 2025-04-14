@@ -1,17 +1,18 @@
 import React from "react";
 import "./ResourcesNav.css";
-import img1 from "/vector.png";
-import logo from "/logo.png";
-import { Link } from "react-router-dom";
+import img1 from "../../../public/vector.png";
+import img2 from "../../../public/logo.png";
+import img3 from "../../../public/arrow.png";
 import { useState } from "react";
-import { FaArrowLeft } from "react-icons/fa";
 
 const ResourcesNav = () => {
   const [inputValue, setInputValue] = useState("");
 
-  const handleBackClick = () => {
-    window.history.back(); 
-  }
+  const handleFocus = () => {
+    if (inputValue === "") {
+      setInputValue('search');
+    }
+  };
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
@@ -21,26 +22,19 @@ const ResourcesNav = () => {
     <div className="Nav">
       <div className="navbar-div">
         <div className="nav-left">
-          <button className="back-button" onClick={handleBackClick}>
-            <FaArrowLeft />
-          </button>
-          <div className="fp-logo">
-            <Link to="/home" className="logo-container">
-              <div className="logo">
-                <img src={logo} alt="" />
-              </div>
-              <div className="logo-text">
-                <h4>Study Circle</h4>
-              </div>
-            </Link>
+          <img className="img3" src={img3} alt="" />
+          <div className="nav-logo">
+            <img src={img2} alt="" />
+            <h4>study circle</h4>
           </div>
         </div>
         <div className="nav-middle">
           <input
             type="text"
             value={inputValue}
+            onFocus={handleFocus}
             onChange={handleChange}
-            placeholder="Search resources..."
+            // placeholder="search"
           />
           <img src={img1} alt="" />
         </div>

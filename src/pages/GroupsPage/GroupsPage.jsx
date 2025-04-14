@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import Footer from "../../components/Footer/Footer";
 import { clearUserData, getUserData } from "../../utils/auth";
+import { Link } from "react-router-dom";
 
 
 import gd from "/graphic-design.png";
@@ -219,10 +220,14 @@ const GroupsPage = () => {
             <button className="back-button" onClick={handleBackClick}>
               <FaArrowLeft />
             </button>
-            <div className="header-logo">
-              <img src={logo} alt="Study Circle Logo" className="logo-img" />
-              <span className="logo-text">Study Circle</span>
-            </div>
+            <Link to="/home" className="logo-container">
+              <div className="logo">
+                <img src={logo} alt="" />
+              </div>
+              <div className="logo-text">
+                <h4>Study Circle</h4>
+              </div>
+            </Link>
           </div>
           <div className="header-right">
             <div className="notification-wrapper" ref={notificationRef}>

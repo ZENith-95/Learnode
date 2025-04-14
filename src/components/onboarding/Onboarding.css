@@ -45,7 +45,6 @@
   font-size: 16px;
   margin-top: 10px;
   width: 90%;
-  
 }
 
 .onboarding-progress {
@@ -55,12 +54,12 @@
   height: fit-content;
 }
 
-.onboarding-progress-left{
-    width: 70%;
+.onboarding-progress-left {
+  width: 70%;
 }
 
-.onboarding-progress-right{
-    width: 30%;
+.onboarding-progress-right {
+  width: 30%;
 }
 
 .onboarding-progress p {
@@ -68,11 +67,11 @@
   margin-bottom: 2px;
 }
 
-.prog{
-    display: flex;
-    align-items: first baseline;
-    gap: 10px;
-    padding: 0;
+.prog {
+  display: flex;
+  align-items: first baseline;
+  gap: 10px;
+  padding: 0;
 }
 
 .progress-bar {
@@ -88,8 +87,6 @@
   background: #00c853;
   transition: width 0.3s ease;
 }
-
-
 
 .onboarding-content {
   background: white;
@@ -143,41 +140,40 @@
   gap: 10px;
 }
 
-.onboarding-info{
-    display: grid;
-    align-items: center;
-    grid-template-columns: repeat(2, 1fr);
+.onboarding-info {
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(2, 1fr);
 }
 
-.onboarding-right{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+.onboarding-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.onboarding-right,.onboarding-left{
-    height: 100%;
-    width: 100%;
-
+.onboarding-right,
+.onboarding-left {
+  height: 100% !important;
+  width: 100% !important;
+  min-height: min-content !important;
 }
 
-.edu-img{
-    margin-top: -4rem !important;
-    width: 18rem !important;
-    height: auto !important;
+.educ-img {
+  margin-top: -4rem !important;
+  width: 18rem !important;
+  height: auto !important;
 }
 
-.edu-img img{
+.edu-img img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.onboarding-info img {
   width: 100%;
   height: 100%;
-}
-
-
-
-.onboarding-info img{
-    width: 100%;
-    height: 100%;
 }
 
 .onboarding-buttons {
@@ -190,7 +186,7 @@
 .next-button,
 .bac-button,
 .start-button {
-  padding: .7rem 2.5rem;
+  padding: 0.7rem 2.5rem;
   font-family: kanit;
   font-size: 16px;
   border-radius: 6px;
@@ -221,4 +217,135 @@
   width: 100%;
   height: auto;
   margin-left: -2rem;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 992px) {
+  .onboarding-container {
+    width: 95%;
+    max-width: 45rem;
+    padding: 15px;
+  }
+
+  .onboarding-header h1 {
+    font-size: 22px;
+  }
+
+  .onboarding-buttons {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .onboarding-container {
+    width: 95%;
+    max-width: 40rem;
+    padding: 15px;
+  }
+
+  .onboarding-header h1 {
+    font-size: 20px;
+  }
+
+  .onboarding-header p {
+    font-size: 14px;
+  }
+
+  .onboarding-info {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .onboarding-right,
+  .onboarding-left {
+    width: 100%;
+  }
+
+  .edu-img {
+    margin-top: 0 !important;
+    width: 15rem !important;
+  }
+
+  .welcome-image {
+    width: 15rem;
+    margin-top: 0;
+  }
+
+  .welcome-img {
+    margin-left: 0;
+  }
+
+  .onboarding-buttons {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .skip-button,
+  .next-button,
+  .bac-button,
+  .start-button {
+    padding: 0.5rem 1.5rem;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .onboarding-container {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .onboarding-header h1 {
+    font-size: 18px;
+    width: 100%;
+  }
+
+  .onboarding-header p {
+    font-size: 13px;
+    width: 100%;
+  }
+
+  .onboarding-progress-left {
+    width: 60%;
+  }
+
+  .onboarding-progress-right {
+    width: 40%;
+  }
+
+  .onboarding-content {
+    padding: 15px;
+  }
+
+  .onboarding-tabs {
+    gap: 1.5rem;
+  }
+
+  .tab {
+    font-size: 14px;
+  }
+
+  .onboarding-step h2 {
+    font-size: 16px;
+  }
+
+  .options label {
+    font-size: 14px;
+  }
+
+  .edu-img {
+    width: 12rem !important;
+  }
+
+  .welcome-image {
+    width: 12rem;
+  }
+
+  .skip-button,
+  .next-button,
+  .bac-button,
+  .start-button {
+    padding: 0.4rem 1rem;
+    font-size: 13px;
+  }
 }

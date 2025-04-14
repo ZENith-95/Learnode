@@ -59,7 +59,7 @@ const Onboarding = ({ isOpen, onClose }) => {
               study groups and friends later on!
             </p>
           )}
-          {step === 2 && <p>Welcome to Study Circle</p>}
+          {step === 2 && <p>Welcome</p>}
         </div>
 
         <div className="onboarding-progress">
@@ -137,7 +137,7 @@ const Onboarding = ({ isOpen, onClose }) => {
                   </div>
                 </div>
                 <div className="onboarding-right">
-                  <div className="edu-img">
+                  <div className="educ-img">
                     <img
                       src="edu-img.png"
                       alt="Education"
@@ -174,7 +174,7 @@ const Onboarding = ({ isOpen, onClose }) => {
               </div>
               <div className="onboarding-info">
                 <div className="onboarding-left">
-                  <h2>Perfect, nice to meet you! Welcome to Study Circle</h2>
+                  <h2>Welcome to Study Circle</h2>
                 </div>
                 <div className="onboarding-right">
                   <div className="welcome-image">
