@@ -10,10 +10,10 @@ import {
   FaTimes,
   FaPen,
 } from "react-icons/fa";
+import CreateGroupModal from "../../components/CreateGroupModal/CreateGroupModal";
 import Footer from "../../components/Footer/Footer";
 import { clearUserData, getUserData } from "../../utils/auth";
 import { Link } from "react-router-dom";
-
 
 import gd from "/graphic-design.png";
 import webdev from "/web-dev.png";
@@ -32,6 +32,7 @@ const GroupsPage = () => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
+  const [showCreateGroupModal, setShowCreateGroupModal] = useState(false);
   const notificationRef = useRef(null);
   const profileRef = useRef(null);
 
@@ -77,7 +78,8 @@ const GroupsPage = () => {
     },
   ]);
 
-  const groups = [
+  // State for managing groups
+  const [groups, setGroups] = useState([
     {
       id: "english",
       name: "English",
@@ -96,7 +98,7 @@ const GroupsPage = () => {
       image: gd,
       members: 20,
     },
-  ];
+  ]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -176,8 +178,30 @@ const GroupsPage = () => {
   };
 
   const handleCreateGroup = () => {
-    // Navigate to create group page
-    navigate("/create-group");
+    // Open the create group modal
+    setShowCreateGroupModal(true);
+  };
+
+  const handleGroupCreated = (groupData) => {
+    // Add the new group to the groups list
+    const newGroup = {
+      id: `group-${Date.now()}`, // Generate a unique ID
+      name: groupData.name,
+      image: "/logo.png", // Default image
+      members: groupData.members.length,
+    };
+
+    // Update groups array with the new group
+    setGroups((prevGroups) => [...prevGroups, newGroup]);
+
+    // In a real application, this would likely involve an API call
+    console.log("New group created:", newGroup);
+
+    // Show a success message
+    alert(`Group "${groupData.name}" created successfully!`);
+
+    // Close the modal
+    setShowCreateGroupModal(false);
   };
 
   const handleGroupClick = (groupId) => {
@@ -499,6 +523,13 @@ const GroupsPage = () => {
       </div>
       {/* Footer Component */}
       <Footer />
+
+      {/* Create Group Modal */}
+      <CreateGroupModal
+        isOpen={showCreateGroupModal}
+        onClose={() => setShowCreateGroupModal(false)}
+        onCreateGroup={handleGroupCreated}
+      />
 
       {/* Add the logout confirmation modal */}
       {showLogoutModal && (

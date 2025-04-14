@@ -50,8 +50,8 @@ const Onboarding = ({ isOpen, onClose }) => {
         <div className="onboarding-header">
           <h1>
             {step === 1
-              ? "Welcome to our study circle! Tell us About Yourself"
-              : "Perfect, nice to meet you!"}
+              ? "Welcome to our StudyCircle! Tell us About Yourself"
+              : "Welcome to StudyCircle!"}
           </h1>
           {step === 1 && (
             <p>
@@ -59,7 +59,7 @@ const Onboarding = ({ isOpen, onClose }) => {
               study groups and friends later on!
             </p>
           )}
-          {step === 2 && <p>Welcome</p>}
+          {step === 2 && <p></p>}
         </div>
 
         <div className="onboarding-progress">
@@ -174,7 +174,7 @@ const Onboarding = ({ isOpen, onClose }) => {
               </div>
               <div className="onboarding-info">
                 <div className="onboarding-left">
-                  <h2>Welcome to Study Circle</h2>
+                  <h2>Perfect! nice to meet you. Welcome to our StudyCircle</h2>
                 </div>
                 <div className="onboarding-right">
                   <div className="welcome-image">
