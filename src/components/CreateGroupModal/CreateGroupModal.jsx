@@ -155,39 +155,41 @@ const CreateGroupModal = ({ isOpen, onClose, onCreateGroup }) => {
 
           <div className="members-list">
             <h3>Your Network</h3>
-            {filteredMembers.length > 0 ? (
-              filteredMembers.map((member) => {
-                const isSelected = selectedMembers.some(
-                  (m) => m.id === member.id
-                );
-                return (
-                  <div
-                    key={member.id}
-                    className={`member-item ${isSelected ? "selected" : ""}`}
-                    onClick={() => handleSelectMember(member)}
-                  >
-                    <div className="member-info">
-                      <img src={member.avatar} alt={member.name} />
-                      <span>{member.name}</span>
-                    </div>
-                    <div className="selection-indicator">
-                      {isSelected ? <FaCheck /> : <FaPlus />}
-                    </div>
-                  </div>
-                );
-              })
-            ) : (
-              <p className="no-results">No members found</p>
-            )}
+            <div className="member-list">
+                {filteredMembers.length > 0 ? (
+                  filteredMembers.map((member) => {
+                    const isSelected = selectedMembers.some(
+                      (m) => m.id === member.id
+                    );
+                    return (
+                      <div
+                        key={member.id}
+                        className={`member-item ${isSelected ? "selected" : ""}`}
+                        onClick={() => handleSelectMember(member)}
+                      >
+                        <div className="member-info">
+                          <img src={member.avatar} alt={member.name} />
+                          <span>{member.name}</span>
+                        </div>
+                        <div className="selection-indicator">
+                          {isSelected ? <FaCheck /> : <FaPlus />}
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <p className="no-results">No members found</p>
+                )}
+            </div>
           </div>
         </div>
 
         <div className="modal-footer">
-          <button className="cancel-button" onClick={onClose}>
-            Cancel
-          </button>
           <button className="create-button" onClick={handleCreateGroup}>
             Create Group
+          </button>
+          <button className="cancel-button" onClick={onClose}>
+            Cancel
           </button>
         </div>
       </div>

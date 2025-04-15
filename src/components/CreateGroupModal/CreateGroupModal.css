@@ -13,27 +13,28 @@
 
 .create-group-modal {
   background-color: white;
+  margin-top: -1rem;
   border-radius: 8px;
   width: 90%;
   max-width: 500px;
-  max-height: 90vh;
-  overflow-y: auto;
+  max-height: 100vh;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
+  transition: all 0.5s ease-in-out;
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
+  padding: 0 20px;
   border-bottom: 1px solid #eee;
 }
 
 .modal-header h2 {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   color: #333;
 }
 
@@ -53,18 +54,18 @@
 .error-message {
   background-color: #ffebee;
   color: #d32f2f;
-  padding: 10px;
+  padding: 5px;
   border-radius: 4px;
-  margin-bottom: 16px;
+  margin-bottom: 6px;
 }
 
 .form-group {
-  margin-bottom: 16px;
+  margin-bottom: 6px;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 2px;
   font-weight: 500;
   color: #333;
 }
@@ -75,6 +76,7 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1rem;
+  font-family: kanit;
 }
 
 .search-container {
@@ -90,11 +92,12 @@
 }
 
 .search-container input {
-  padding-left: 36px;
+  padding-left: 1rem;
+  font-family: kanit;
 }
 
 .selected-members {
-  margin-bottom: 20px;
+  margin-bottom: 2px;
 }
 
 .selected-members h3 {
@@ -135,9 +138,14 @@
   align-items: center;
 }
 
+.member-list {
+  overflow-y: scroll;
+  max-height: 10rem;
+  padding-right: 10px;
+  scrollbar-width:thin;
+}
+
 .members-list {
-  max-height: 300px;
-  overflow-y: auto;
   border: 1px solid #eee;
   border-radius: 4px;
   padding: 10px;
@@ -195,8 +203,9 @@
 
 .modal-footer {
   display: flex;
-  justify-content: flex-end;
-  padding: 16px 20px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 20px;
   border-top: 1px solid #eee;
   gap: 10px;
 }
@@ -208,17 +217,22 @@
   border-radius: 4px;
   cursor: pointer;
   font-weight: 500;
+  display: none;
   color: #333;
 }
 
 .create-button {
-  background-color: #2196f3;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background: rgb(0, 0, 0);
+  color: #ffffff;
   border: none;
-  padding: 10px 16px;
-  border-radius: 4px;
   cursor: pointer;
-  font-weight: 500;
-  color: white;
+  width: 50%;
+  align-self: center;
+  border-radius: 1rem;
+  font-family: kanit;
+  font-size: 1rem;
 }
 
 .cancel-button:hover {
@@ -226,5 +240,7 @@
 }
 
 .create-button:hover {
-  background-color: #1976d2;
+  background: rgb(27, 71, 192);
+  color: #fff;
+  border: none;
 }
