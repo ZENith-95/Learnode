@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "./GroupPage.css";
-import profile_img from "/profile.png"
+import profile_img from "/profile.png";
 import {
   FaUserCircle,
   FaPaperPlane,
@@ -39,6 +39,13 @@ const GroupPage = () => {
   const [selectedMember, setSelectedMember] = useState(null);
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [showChatModal, setShowChatModal] = useState(false);
+
+  // State to store dynamic group data for newly created groups
+  const [dynamicGroups, setDynamicGroups] = useState(() => {
+    // Try to get any dynamically created groups from localStorage
+    const savedGroups = localStorage.getItem("dynamicGroups");
+    return savedGroups ? JSON.parse(savedGroups) : {};
+  });
 
   // Group data based on the groupId
   const groupData = {
@@ -229,12 +236,32 @@ const GroupPage = () => {
     },
   };
 
-  const group = groupData[groupId] || {
+  // Check localStorage for dynamically created groups
+  useEffect(() => {
+    const savedGroups = localStorage.getItem("dynamicGroups");
+    if (savedGroups) {
+      setDynamicGroups(JSON.parse(savedGroups));
+    }
+  }, []);
+
+  // Get group data from either static data or dynamic data
+  const group = {
     name: "Unknown Group",
     members: 0,
     activeMembersList: [],
     messages: [],
+    ...(dynamicGroups[groupId] || groupData[groupId] || {})
   };
+  
+  // Ensure activeMembersList is always an array
+  if (!group.activeMembersList) {
+    group.activeMembersList = [];
+  }
+  
+  // Ensure messages is always an array
+  if (!group.messages) {
+    group.messages = [];
+  }
 
   // Resources data (same for all groups)
   const resources = [

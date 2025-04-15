@@ -79,9 +79,9 @@ const CreateGroupModal = ({ isOpen, onClose, onCreateGroup }) => {
     // Clear any previous errors
     setError("");
 
-    // Create the group
+    // Create the group with the exact name entered by the user
     onCreateGroup({
-      name: groupName,
+      name: groupName.trim(),
       members: selectedMembers,
     });
 
@@ -156,30 +156,30 @@ const CreateGroupModal = ({ isOpen, onClose, onCreateGroup }) => {
           <div className="members-list">
             <h3>Your Network</h3>
             <div className="member-list">
-                {filteredMembers.length > 0 ? (
-                  filteredMembers.map((member) => {
-                    const isSelected = selectedMembers.some(
-                      (m) => m.id === member.id
-                    );
-                    return (
-                      <div
-                        key={member.id}
-                        className={`member-item ${isSelected ? "selected" : ""}`}
-                        onClick={() => handleSelectMember(member)}
-                      >
-                        <div className="member-info">
-                          <img src={member.avatar} alt={member.name} />
-                          <span>{member.name}</span>
-                        </div>
-                        <div className="selection-indicator">
-                          {isSelected ? <FaCheck /> : <FaPlus />}
-                        </div>
+              {filteredMembers.length > 0 ? (
+                filteredMembers.map((member) => {
+                  const isSelected = selectedMembers.some(
+                    (m) => m.id === member.id
+                  );
+                  return (
+                    <div
+                      key={member.id}
+                      className={`member-item ${isSelected ? "selected" : ""}`}
+                      onClick={() => handleSelectMember(member)}
+                    >
+                      <div className="member-info">
+                        <img src={member.avatar} alt={member.name} />
+                        <span>{member.name}</span>
                       </div>
-                    );
-                  })
-                ) : (
-                  <p className="no-results">No members found</p>
-                )}
+                      <div className="selection-indicator">
+                        {isSelected ? <FaCheck /> : <FaPlus />}
+                      </div>
+                    </div>
+                  );
+                })
+              ) : (
+                <p className="no-results">No members found</p>
+              )}
             </div>
           </div>
         </div>

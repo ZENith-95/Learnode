@@ -183,9 +183,12 @@ const GroupsPage = () => {
   };
 
   const handleGroupCreated = (groupData) => {
+    // Generate a unique ID for the new group
+    const groupId = `group-${Date.now()}`;
+    
     // Add the new group to the groups list
     const newGroup = {
-      id: `group-${Date.now()}`, // Generate a unique ID
+      id: groupId,
       name: groupData.name,
       image: "/logo.png", // Default image
       members: groupData.members.length,
@@ -193,6 +196,19 @@ const GroupsPage = () => {
 
     // Update groups array with the new group
     setGroups((prevGroups) => [...prevGroups, newGroup]);
+    
+    // Store the group data in localStorage for use in GroupPage
+    const dynamicGroups = JSON.parse(localStorage.getItem('dynamicGroups') || '{}');
+    dynamicGroups[groupId] = {
+      name: groupData.name,
+      members: groupData.members.length,
+      activeMembersList: groupData.members.map(member => ({
+        id: member.id,
+        name: member.name,
+        avatar: member.avatar
+      }))
+    };
+    localStorage.setItem('dynamicGroups', JSON.stringify(dynamicGroups));
 
     // In a real application, this would likely involve an API call
     console.log("New group created:", newGroup);
